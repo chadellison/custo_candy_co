@@ -6,7 +6,9 @@ RSpec.feature "visitor can view all items in database" do
     candy2 = create(:candy)
     candy3 = create(:candy)
     visit root_path
-    click_on "Candy"
+    within(".header") do
+      click_on "Candy"
+    end
     expect(current_path).to eq candies_path
 
     expect(page).to have_content "C Title"
