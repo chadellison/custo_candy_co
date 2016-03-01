@@ -1,3 +1,8 @@
 <% @candies.each do |c| %>
-  <img src="<%= c.image %>" /> <%= c.title %>
+<div class="well well-md">
+  <h5><%= c.title %> </h5>
+  <p> <%= c.description %> </p>
+  <p><%= c.price %></p>
+  <img src="<%= c.image %>" />
+</div>
 <% end %>
