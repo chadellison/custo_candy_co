@@ -22,10 +22,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+
+gem 'rails_12factor', group: :production
+
+gem 'figaro'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -33,6 +37,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec-rails'
+  gem 'launchy'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'mocha'
 end
 
 group :development do
