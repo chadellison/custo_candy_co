@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:900' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/application.css">
   <title>CustoCandyCo</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body background="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW-dahcTg9LInpc56W--7x9ESl-gc7PPlwaGlnI678FFNdSJl0DQ">
 
-<%= yield %>
+  <%= render "partials/header" %>
+
+  <%= yield %>
+
+  <%= render "partials/footer" %>
 
 </body>
 </html>
