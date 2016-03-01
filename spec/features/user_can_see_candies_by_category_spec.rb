@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "user can see candies by category" do
   scenario "user sees each candy in a category" do
+
     candy1 = create(:candy)
     candy2 = create(:candy)
     candy3 = create(:candy)
