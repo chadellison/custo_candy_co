@@ -40,3 +40,7 @@
 .nav li:last-child {
   margin-right: 0;
 }
+
+.candy-box {
+  background-color: white;
+}
