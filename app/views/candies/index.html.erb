@@ -4,6 +4,6 @@
   <p> <%= candy.description %> </p>
   <p><%= candy.price %></p>
   <img src="<%= candy.image %>" />
-  <p><%= button_to "Add to Cart", carts_path(candy_id: candy.id), class: "btn btn-success" %> </p>
+  <p><div id="<%= candy.id %>"><%= button_to "Add to Cart", carts_path(candy_id: candy.id), class: "btn btn-success" %></div></p>
 </div>
 <% end %>
