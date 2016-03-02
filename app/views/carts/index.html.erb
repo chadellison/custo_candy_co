@@ -1,4 +1,5 @@
 <div>
+  <% if @contents %>
   <table class=bordered>
     <thead>
      <tr>
@@ -19,4 +20,8 @@
         <td><%= quantity %></td>
     <% end %>
       <td>Total Price: <%= @cart.total_cost %></td>
+
+    <% else %>
+      <h2>You have no items in your cart</h2>
+    <% end %>
 </div>
