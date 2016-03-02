@@ -11,6 +11,6 @@ class CartsController < ApplicationController
   end
 
   def show
-    @candies = @cart.find_candies(session[:cart])
+    @candies = @cart.find_candies(@cart.contents)
   end
 end
