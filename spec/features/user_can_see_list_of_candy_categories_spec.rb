@@ -2,24 +2,14 @@ require "rails_helper"
 
 RSpec.feature "user can see list of all categories" do
   scenario "user sees index page of candy categories" do
-    candy1 = create(:candy)
-    candy2 = create(:candy)
-    candy3 = create(:candy)
-    candy4 = create(:candy)
-
     chocolate = create(:category)
     gummie = create(:category)
-
-    chocolate.candies << candy1
-    chocolate.candies << candy2
-    gummie.candies << candy3
-    gummie.candies << candy4
 
     visit root_path
     within(".header") do
       click_on "Candy Categories"
     end
-    expect(page).to have_content "D name"
-    expect(page).to have_content "A name"
+    expect(page).to have_content chocolate.name
+    expect(page).to have_content gummie.name
   end
 end

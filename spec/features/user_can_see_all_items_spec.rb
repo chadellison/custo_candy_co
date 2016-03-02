@@ -11,8 +11,8 @@ RSpec.feature "visitor can view all items in database" do
     end
     expect(current_path).to eq candies_path
 
-    expect(page).to have_content "C Title"
-    expect(page).to have_content "B Title"
-    expect(page).to have_content "D Title"
+    expect(page).to have_content candy1.title
+    expect(page).to have_content candy2.title
+    expect(page).to have_content candy3.title
   end
 end

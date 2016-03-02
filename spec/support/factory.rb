@@ -4,7 +4,7 @@ FactoryGirl.define do
     description
     price
     category_id nil
-    image "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTW92hfHabHilIW2TYuDC1HX4IN1yvxpmOVNnFIbSgizNg_avs3"
+    image "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHDOSNxmatCFt8kQLujghKqW3dlmgvBhMrqBd747RP95UQTuDzRF7838s"
   end
 
   sequence :title, ["A", "C", "B", "D"].cycle do |n|
