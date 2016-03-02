@@ -25,12 +25,22 @@ RSpec.describe Cart, type: :model do
     candy1 = create(:candy)
     candy2 = create(:candy)
     candy3 = create(:candy)
-    cart = Cart.new(candy1.id => 2, candy2.id => 5, candy3.id => 4)
+    cart = Cart.new(candy1.id.to_s => 2, candy2.id.to_s => 5, candy3.id.to_s => 4)
 
     candy1_cost = candy1.price * 2
     candy2_cost = candy2.price * 5
     candy3_cost = candy3.price * 4
     expect("$#{(candy1_cost + candy2_cost + candy3_cost) / 100.0 }"
           ).to eq cart.total_cost
+  end
+
+  it "can remove a candy" do
+    candy1 = create(:candy)
+    candy2 = create(:candy)
+    candy3 = create(:candy)
+    cart = Cart.new(candy1.id.to_s => 2, candy2.id.to_s => 5, candy3.id.to_s => 4)
+
+    cart.remove_candy(candy1)
+    expect(cart.contents).to eq(candy2.id.to_s => 5, candy3.id.to_s => 4)
   end
 end
