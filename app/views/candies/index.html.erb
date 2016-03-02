@@ -1,8 +1,9 @@
-<% @candies.each do |c| %>
+<% @candies.each do |candy| %>
 <div class="well well-md">
-  <h5><%= c.title %> </h5>
-  <p> <%= c.description %> </p>
-  <p><%= c.price %></p>
-  <img src="<%= c.image %>" />
+  <h5><%= candy.title %> </h5>
+  <p> <%= candy.description %> </p>
+  <p><%= candy.price %></p>
+  <img src="<%= candy.image %>" />
+  <p><%= button_to "Add to Cart", carts_path(candy_id: candy.id), class: "btn btn-success" %> </p>
 </div>
 <% end %>
