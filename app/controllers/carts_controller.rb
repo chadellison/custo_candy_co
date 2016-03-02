@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  include ActionView::Helpers::NumberHelper
+
   def create
     candy = Candy.find(params[:candy_id])
     @cart.add_candy(candy.id)
