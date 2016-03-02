@@ -1,9 +1,6 @@
 <% @candies.each do |candy| %>
 <div class="well well-md">
-  <h5><%= candy.title %> </h5>
-  <p> <%= candy.description %> </p>
-  <p><%= candy.price %></p>
-  <img src="<%= candy.image %>" />
-  <p><div id="<%= candy.id %>"><%= button_to "Add to Cart", carts_path(candy_id: candy.id), class: "btn btn-success" %></div></p>
+  <%= render partial: "partials/each_candy", locals: {candy: candy} %>
+  <p><%= button_to "Add to Cart", carts_path(candy_id: candy.id), class: "btn btn-success" %> </p>
 </div>
 <% end %>

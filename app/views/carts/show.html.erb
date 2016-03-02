@@ -11,14 +11,11 @@
        <th><strong>Total</strong></th>
      </tr>
     </thead>
-    <% @contents.each do |id, quantity| %>
+    <% @candies.each do |candy, quantity| %>
       <tr>
-        <% candy = Candy.find(id) %>
-        <img src="<%= candy.image %>"/>
-        <td><%= candy.title %></td>
-        <td><%= candy.description %></td>
-        <td><%= candy.to_dollars(candy.price) %></td>
+        <%= render partial: "partials/each_candy", locals: {candy: candy} %>
         <td><%= quantity %></td>
+        <%= link_to "Remove" %>
     <% end %>
       <td>Total Price: <%= @cart.total_cost %></td>
 
