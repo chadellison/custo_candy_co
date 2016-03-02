@@ -1,0 +1,9 @@
+<div><% @contents.each do |id, quantity| %>
+  <% candy = Candy.find(id) %>
+  <img src="<%= candy.image %>" />
+  <%= candy.title %>
+  <%= candy.description %>
+  <%= candy.price %>
+  <%= quantity %>
+<% end %>
+Total Price: <%= @cart.total_cost %></div>

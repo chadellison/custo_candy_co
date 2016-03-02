@@ -17,16 +17,16 @@ RSpec.feature "user can see candies by category" do
     gummie.candies << candy4
 
     visit category_path(chocolate.id)
-    expect(page).to have_content "A Title"
-    expect(page).to have_content "C Title"
-    expect(page).to have_no_content "B Title"
-    expect(page).to have_no_content "D Title"
+    expect(page).to have_content candy1.title
+    expect(page).to have_content candy2.title
+    expect(page).to have_no_content candy3.title
+    expect(page).to have_no_content candy4.title
 
     visit category_path(gummie.id)
-    expect(page).to have_content "B Title"
-    expect(page).to have_content "D Title"
+    expect(page).to have_content candy3.title
+    expect(page).to have_content candy4.title
 
-    expect(page).to have_no_content "A Title"
-    expect(page).to have_no_content "C Title"
+    expect(page).to have_no_content candy1.title
+    expect(page).to have_no_content candy2.title
   end
 end
