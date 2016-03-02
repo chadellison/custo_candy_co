@@ -10,7 +10,7 @@ class CartsController < ApplicationController
     redirect_to candies_path
   end
 
-  def index
-    @contents = session[:cart]
+  def show
+    @candies = @cart.find_candies(session[:cart])
   end
 end

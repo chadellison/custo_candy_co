@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Candy, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "price format" do
+    it "turns cents into dollars" do
+      candy = Candy.new(price: 5000)
+      expect(candy.currency).to eq(50.00)
+    end
+  end
 end

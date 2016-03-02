@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :candies, only: [:index]
   resources :categories, only: [:show, :index]
   resources :carts, only: [:create]
-  get "/carts", to: "carts#index", as: "/cart"
+  get "/cart", to: "carts#show"
 end

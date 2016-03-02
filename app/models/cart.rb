@@ -18,8 +18,14 @@ class Cart
   def total_cost
     total_amount = contents.map do |id, quantity|
       candy = Candy.find(id.to_i)
-      candy.currency(candy.price) * quantity
+      candy.currency * quantity
     end.sum
     number_to_currency(total_amount)
+  end
+
+  def find_candies(contents)
+    contents.map do |id, _|
+      Candy.find(id)
+    end
   end
 end
