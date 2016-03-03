@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
   include ActionView::Helpers::NumberHelper
+  include CartsHelper
 
   def create
     candy = Candy.find(params[:candy_id])
@@ -10,7 +11,26 @@ class CartsController < ApplicationController
     redirect_to candies_path
   end
 
-  def index
-    @contents = session[:cart]
+  def show
+    @candies = @cart.find_candies(@cart.contents)
+  end
+
+  def update
+    contents = @cart.contents
+
+    if params[:operator] == "-"
+      contents[params["candy_id"]] -= 1
+      contents[params["candy_id"]] = 0 if contents[params["candy_id"]] < 0
+    else
+      contents[params["candy_id"]] += 1
+    end
+    redirect_to cart_path
+  end
+
+  def destroy
+    candy = Candy.find(params[:candy_id])
+    @cart.remove_candy(candy)
+    flash[:success] = "Successfully removed #{path(candy)} from your cart."
+    redirect_to cart_path
   end
 end

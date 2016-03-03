@@ -1,0 +1,26 @@
+<%= raw(flash[:success]) %>
+<div>
+  <% unless @cart.contents.empty? %>
+
+  <table class=bordered>
+    <thead>
+     <tr>
+       <th><strong>Candy</strong></th>
+       <th><strong>Description</strong></th>
+       <th><strong>price</strong></th>
+       <th><strong>Quantity</strong></th>
+       <th><strong>Total</strong></th>
+     </tr>
+    </thead>
+    <% @candies.each do |candy, quantity| %>
+      <tr>
+        <%= render partial: "partials/each_candy", locals: {candy: candy} %>
+        <td><%= quantity %> <%= button_to "+ 1", cart_path(candy_id: candy.id, operator: "+"), method: :put %> <%= button_to "- 1", cart_path(candy_id: candy.id, operator: "-"), method: :put %></td>
+        <div id="<%= candy.id %>"><%= button_to "Remove", cart_path(candy_id: candy.id), method: "delete" %></div>
+    <% end %>
+      <td>Total Price: <%= @cart.total_cost %></td>
+
+    <% else %>
+      <h2>You have no items in your cart</h2>
+    <% end %>
+</div>

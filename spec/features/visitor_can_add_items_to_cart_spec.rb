@@ -7,7 +7,6 @@ RSpec.feature "User can add candy to cart" do
     candy3 = create(:candy)
 
     visit candies_path
-
     within("##{candy1.id}") do
       click_button "Add to Cart"
     end
