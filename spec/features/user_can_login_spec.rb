@@ -1,17 +1,17 @@
 require "rails_helper"
 
-RSpec.feature "user can create account" do
-  it "user can see user login welcome page" do
+RSpec.feature "user can login to account" do
+  it "user can see user login welcome page after loggin in" do
+    User.create(name: "Nate", username: "nate", password: "password")
     visit "/"
-    click_on "Create Account"
+    click_on "Login"
 
-    expect("/register").to eq current_path
+    expect("/login").to eq current_path
 
-    fill_in "Name", with: "Nate"
     fill_in "Username", with: "nate"
     fill_in "Password", with: "password"
 
-    click_on "Sign up"
+    click_on "Sign in"
 
     expect("/dashboard").to eq current_path
 
