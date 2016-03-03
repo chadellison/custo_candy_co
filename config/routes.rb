@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get "/dashboard", to: "users#show"
 
   resources :carts, only: [:create]
-  get "/cart", to: "carts#index"
   get "/cart", to: "carts#show"
   put "/cart", to: "carts#update"
   delete "/cart", to: "carts#destroy"
