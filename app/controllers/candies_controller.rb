@@ -4,6 +4,5 @@ class CandiesController < ApplicationController
   end
 
   def show
-
   end
 end
