@@ -1,3 +1,4 @@
+<%= raw(flash[:success]) %>
 <div>
   <% unless @cart.contents.empty? %>
 
@@ -15,7 +16,7 @@
       <tr>
         <%= render partial: "partials/each_candy", locals: {candy: candy} %>
         <td><%= quantity %></td>
-        <%= link_to "Remove" %>
+        <div id="<%= candy.id %>"><%= button_to "Remove", cart_path(candy_id: candy.id), method: "delete" %></div>
     <% end %>
       <td>Total Price: <%= @cart.total_cost %></td>
 
