@@ -4,5 +4,6 @@ class CandiesController < ApplicationController
   end
 
   def show
+    @candy = Candy.find(params[:id])
   end
 end
