@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   delete "/cart", to: "carts#destroy"
   get "/cart", to: "carts#show"
+  put "/cart", to: "carts#update"
 end

@@ -15,6 +15,18 @@ class CartsController < ApplicationController
     @candies = @cart.find_candies(@cart.contents)
   end
 
+  def update
+    contents = @cart.contents
+
+    if params[:operator] == "-"
+      contents[params["candy_id"]] -= 1
+      contents[params["candy_id"]] = 0 if contents[params["candy_id"]] < 0
+    else
+      contents[params["candy_id"]] += 1
+    end
+    redirect_to cart_path
+  end
+
   def destroy
     candy = Candy.find(params[:candy_id])
     @cart.remove_candy(candy)

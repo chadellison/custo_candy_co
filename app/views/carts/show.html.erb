@@ -15,7 +15,7 @@
     <% @candies.each do |candy, quantity| %>
       <tr>
         <%= render partial: "partials/each_candy", locals: {candy: candy} %>
-        <td><%= quantity %></td>
+        <td><%= quantity %> <%= button_to "+ 1", cart_path(candy_id: candy.id, operator: "+"), method: :put %> <%= button_to "- 1", cart_path(candy_id: candy.id, operator: "-"), method: :put %></td>
         <div id="<%= candy.id %>"><%= button_to "Remove", cart_path(candy_id: candy.id), method: "delete" %></div>
     <% end %>
       <td>Total Price: <%= @cart.total_cost %></td>
