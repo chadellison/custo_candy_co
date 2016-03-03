@@ -26,8 +26,8 @@ RSpec.describe Cart, type: :model do
     candy2 = create(:candy)
     candy3 = create(:candy)
     cart = Cart.new(candy1.id.to_s => 2,
-      candy2.id.to_s => 5,
-      candy3.id.to_s => 4)
+                    candy2.id.to_s => 5,
+                    candy3.id.to_s => 4)
 
     candy1_cost = candy1.price * 2
     candy2_cost = candy2.price * 5
@@ -41,8 +41,8 @@ RSpec.describe Cart, type: :model do
     candy2 = create(:candy)
     candy3 = create(:candy)
     cart = Cart.new(candy1.id.to_s => 2,
-      candy2.id.to_s => 5,
-      candy3.id.to_s => 4)
+                    candy2.id.to_s => 5,
+                    candy3.id.to_s => 4)
 
     cart.remove_candy(candy1)
     expect(cart.contents).to eq(candy2.id.to_s => 5, candy3.id.to_s => 4)

@@ -41,7 +41,7 @@ RSpec.feature "user can remove items from cart" do
     expect(page).to have_content
     "Successfully removed #{candy3.title} from your cart."
 
-    click_on "#{candy3.title}"
+    click_on candy3.title.to_s
     expect(current_path).to eq candy_path(candy3.id)
 
     visit cart_path
