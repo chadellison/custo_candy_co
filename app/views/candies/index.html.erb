@@ -1,6 +1,17 @@
 <% @candies.each do |candy| %>
-<div class="well well-md">
-  <%= render partial: "partials/each_candy", locals: {candy: candy} %>
-  <p><div id="<%= candy.id %>"><%= button_to "Add to Cart", carts_path(candy_id: candy.id), class: "btn btn-success" %></div></p>
+<div class="col s3">
+  <div class="card small">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="<%= candy.image %>">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4"><%= candy.title %><i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"><%= candy.price %><i class="material-icons right">close</i></span>
+      <p><%= candy.description %></p>
+    </div>
+  </div>
+  <div id="<%= candy.id %>" class="center-align"><%= button_to "Add to Cart", carts_path(candy_id: candy.id), class: "btn btn-success" %></div>
 </div>
 <% end %>
