@@ -1,6 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Cart, type: :model do
+  include ActionView::Helpers::NumberHelper
   it "returns content" do
     cart = Cart.new("1" => 1)
     expect("1" => 1).to eq cart.contents
@@ -32,8 +33,8 @@ RSpec.describe Cart, type: :model do
     candy1_cost = candy1.price * 2
     candy2_cost = candy2.price * 5
     candy3_cost = candy3.price * 4
-    expect("$#{(candy1_cost + candy2_cost + candy3_cost) / 100.0 }"
-          ).to eq cart.total_cost
+    cost = (candy1_cost + candy2_cost + candy3_cost) / 100.0
+    expect(number_to_currency(cost.to_s)).to eq cart.total_cost
   end
 
   it "can remove a candy" do
