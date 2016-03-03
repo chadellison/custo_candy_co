@@ -1,3 +1,5 @@
 <% @categories.each do |category| %>
-  <%= link_to "#{category.name}", category_path(category) %>
+  <div class="waves-effect waves-light btn-large">
+    <%= link_to "#{category.name}", category_path(category) %>
+  </div>
 <% end %>
