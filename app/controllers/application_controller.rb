@@ -5,13 +5,13 @@ class ApplicationController < ActionController::Base
 
   before_action :set_cart
 
-  helper_method :current_user
+  helper_method :current_user, :logout
 
   def set_cart
     @cart = Cart.new(session[:cart])
   end
 
   def current_user
-    @user = User.find_by(id: session[:user_id]) if session[:user_id]
+    @user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 end
