@@ -28,4 +28,8 @@ class Cart
       Candy.find(id)
     end
   end
+
+  def remove_candy(candy)
+    contents.delete(candy.id.to_s)
+  end
 end
