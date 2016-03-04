@@ -5,8 +5,6 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show, :index]
 
-  # get "/admin/dashboard", to: "users#show"
-
   namespace :admin do
     resources :dashboard, only: [:show]
   end
