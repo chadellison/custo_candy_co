@@ -15,4 +15,8 @@ class CandyOrder < ActiveRecord::Base
   def candy_title(candy_id)
     Candy.find(candy_id).title
   end
+
+  def candy_status(candy_id)
+    Candy.find(candy_id).status
+  end
 end
