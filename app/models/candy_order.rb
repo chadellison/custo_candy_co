@@ -9,7 +9,7 @@ class CandyOrder < ActiveRecord::Base
   end
 
   def self.total_price(candy_orders)
-    candy_orders.reduce(0) { |sum, candy_order| sum += candy_order.sub_total }
+    candy_orders.inject(0) { |sum, candy_order| sum + candy_order.sub_total }
   end
 
   def candy_title(candy_id)

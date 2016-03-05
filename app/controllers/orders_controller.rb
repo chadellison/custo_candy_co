@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[ :id ])
+    @order = Order.find(params[:id])
     @candy_orders = @order.candy_orders
     @total_price = CandyOrder.total_price(@candy_orders)
   end

@@ -23,7 +23,7 @@ RSpec.feature "user can adjust quantity of items in cart" do
 
     expect(page).to have_content "Total items: 1"
     expect(page).to have_content "Total Price: $0.10"
-    end
+  end
 
   scenario "user sees error message" do
     candy = create(:candy)

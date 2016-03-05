@@ -17,8 +17,8 @@ RSpec.feature "User can see past order" do
     cart.add_candy(candy2.id)
     cart.add_candy(candy2.id)
 
-    candy1_quantity = cart.contents[(candy1.id).to_s]
-    candy2_quantity = cart.contents[(candy2.id).to_s]
+    candy1_quantity = cart.contents[candy1.id.to_s]
+    candy2_quantity = cart.contents[candy2.id.to_s]
 
     candy1_price = (candy1.price * candy1_quantity)
     candy2_price = (candy2.price * candy2_quantity)
@@ -26,7 +26,6 @@ RSpec.feature "User can see past order" do
     order.candies << candy1
     order.candies << candy2
     user.orders << order
-
 
     candy_order1 = CandyOrder.find_by(candy_id: candy1.id, order_id: order.id)
     candy_order1.update(quantity: candy1_quantity, sub_total: candy1_price)
@@ -50,12 +49,14 @@ RSpec.feature "User can see past order" do
 
     click_on "#{order.id}"
 
+    price = candy_order1.sub_total + candy_order2.sub_total
+
     expect(page).to have_content "Status: #{order.status}"
-    expect(page).to have_content "Item: #{candy1.title}, Quantity: #{candy1_quantity}, Subtotal: #{price1}"
-    expect(page).to have_content "Item: #{candy2.title}, Quantity: #{candy2_quantity}, Subtotal: #{price2}"
-    expect(page).to have_content "Total order price: #{number_to_currency(candy_order1.sub_total + candy_order2.sub_total)}"
+    expect(page).to have_content "Item: #{candy1.title},
+                                  Quantity: #{candy1_quantity}, Subtotal: #{price1}"
+    expect(page).to have_content "Item: #{candy2.title},
+                                  Quantity: #{candy2_quantity}, Subtotal: #{price2}"
+    expect(page).to have_content "Total order price: #{number_to_currency(price)}"
     expect(page).to have_content "Ordered at: #{order.created_at}"
   end
 end
-
-
