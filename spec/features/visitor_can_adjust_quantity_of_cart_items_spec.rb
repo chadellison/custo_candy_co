@@ -11,18 +11,18 @@ RSpec.feature "user can adjust quantity of items in cart" do
     visit cart_path
 
     expect(page).to have_content "Total items: 1"
-    expect(page).to have_content "Total Price: $0.08"
+    expect(page).to have_content candy.price
 
     click_button "+"
 
     expect(page).to have_content "Total items: 2"
-    expect(page).to have_content "Total Price: $0.16"
+    expect(page).to have_content candy.price * 2
 
     click_button "-"
     expect(current_path).to eq cart_path
 
     expect(page).to have_content "Total items: 1"
-    expect(page).to have_content "Total Price: $0.08"
+    expect(page).to have_content candy.price
   end
 
   scenario "user sees error message" do

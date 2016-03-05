@@ -1,0 +1,9 @@
+<h3>Candies</h3>
+<% @candies.each do |candy| %>
+  <img class="candy-image" src="<%= candy.image %>"/>
+  <p><%= link_to candy.title, admin_candy_path(candy.id) %></p>
+  <p><%= candy.description %></p>
+  <p><%= candy.to_dollars %></p>
+  <p><%= candy.status %></p>
+  <%= button_to "Edit", edit_admin_candy_path(candy.id), method: :get %>
+<% end %>
