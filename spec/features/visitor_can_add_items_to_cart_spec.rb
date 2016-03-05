@@ -19,12 +19,13 @@ RSpec.feature "User can add candy to cart" do
     expect(page).to have_content "Cart updated with #{candy3.title}"
 
     expect(page).to have_content "Total items: 2"
+    total_price = (candy1.price + candy3.price)
 
     click_on "View Cart"
     expect(current_path).to eq cart_path
     expect(page).to have_content candy1.title
     expect(page).to have_content candy1.description
     expect(page).to have_content candy1.price
-    expect(page).to have_content "Total Price: $#{(candy1.price + candy3.price) / 100}"
+    expect(page).to have_content "Total Price: #{candy1.number_to_currency(total_price / 100.0)}"
   end
 end

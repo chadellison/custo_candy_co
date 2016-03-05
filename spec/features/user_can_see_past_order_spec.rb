@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "User can see past order" do
   include ActionView::Helpers::NumberHelper
   it "User sees past order when they click on orders" do
-    User.create(name: "Nate", username: "nate", password: "password")
+    user = User.create(name: "Nate", username: "nate", password: "password")
     candy1 = create(:candy)
     candy2 = create(:candy)
 
@@ -25,12 +25,13 @@ RSpec.feature "User can see past order" do
 
     order.candies << candy1
     order.candies << candy2
+    user.orders << order
 
 
-    candy_order1 = CandyOrder.find_by(order_id: order.id)
+    candy_order1 = CandyOrder.find_by(candy_id: candy1.id, order_id: order.id)
     candy_order1.update(quantity: candy1_quantity, sub_total: candy1_price)
 
-    candy_order2 = CandyOrder.find_by(order_id: order.id)
+    candy_order2 = CandyOrder.find_by(candy_id: candy2.id, order_id: order.id)
     candy_order2.update(quantity: candy2_quantity, sub_total: candy2_price)
 
     price1 = number_to_currency(candy_order1.sub_total)
@@ -50,10 +51,10 @@ RSpec.feature "User can see past order" do
     click_on "#{order.id}"
 
     expect(page).to have_content "Status: #{order.status}"
-    expect(page).to have_content "Item: #{candy1.title}, Quantity: #{candy1_quantity}, Total item price: #{price1}"
-    expect(page).to have_content "Item: #{candy2.title}, Quantity: #{candy2_quantity}, Total item price: #{price2}"
-    expect(page).to have_content "Total order price: #{price1 + price2}"
-    expect(page).to have_content "Ordered #{order.created_at}"
+    expect(page).to have_content "Item: #{candy1.title}, Quantity: #{candy1_quantity}, Subtotal: #{price1}"
+    expect(page).to have_content "Item: #{candy2.title}, Quantity: #{candy2_quantity}, Subtotal: #{price2}"
+    expect(page).to have_content "Total order price: #{number_to_currency(candy_order1.sub_total + candy_order2.sub_total)}"
+    expect(page).to have_content "Ordered at: #{order.created_at}"
   end
 end
 

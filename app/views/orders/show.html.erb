@@ -1,0 +1,10 @@
+<h2>Order Status: <%= @order.status %></h2>
+  <% @candy_orders.each do |candy_order| %>
+      <p>Item: <%= candy_order.candy_title(candy_order.candy_id) %>, Quantity: <%= candy_order.quantity %>, Subtotal: <%= candy_order.to_dollars %></p>
+  <% end %>
+
+  <h3>Total order price: <%= number_to_currency(@total_price) %></h3>
+  <h3>Ordered at: <%= @order.created_at %></h3>
+
+
+
