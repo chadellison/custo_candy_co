@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305015459) do
+ActiveRecord::Schema.define(version: 20160305173951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,11 +27,30 @@ ActiveRecord::Schema.define(version: 20160305015459) do
     t.string   "status"
   end
 
+  create_table "candy_orders", force: :cascade do |t|
+    t.integer "candy_id"
+    t.integer "order_id"
+    t.integer "quantity"
+    t.integer "sub_total"
+  end
+
+  add_index "candy_orders", ["candy_id"], name: "index_candy_orders_on_candy_id", using: :btree
+  add_index "candy_orders", ["order_id"], name: "index_candy_orders_on_order_id", using: :btree
+
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name"
   end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "status"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string  "username"
@@ -40,4 +59,7 @@ ActiveRecord::Schema.define(version: 20160305015459) do
     t.integer "role",            default: 0
   end
 
+  add_foreign_key "candy_orders", "candies"
+  add_foreign_key "candy_orders", "orders"
+  add_foreign_key "orders", "users"
 end

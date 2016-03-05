@@ -2,7 +2,7 @@ class Cart
   include ActionView::Helpers::NumberHelper
   attr_reader :contents
 
-  def initialize(initial_contents)
+  def initialize(initial_contents = nil)
     @contents = initial_contents || {}
   end
 
