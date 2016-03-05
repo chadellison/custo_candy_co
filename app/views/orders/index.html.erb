@@ -1,0 +1,3 @@
+<% @orders.each do |order| %>
+  <h3>Order <%= link_to "#{order.id}", order_path(order) %> <%= order.created_at %></h3>
+<% end %>

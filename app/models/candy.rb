@@ -4,7 +4,6 @@ class Candy < ActiveRecord::Base
   has_many :candy_orders
   has_many :orders, through: :candy_orders
 
-
   def currency
     price / 100.0
   end
