@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160305173951) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "category_id"
+    t.string   "status"
   end
 
   create_table "candy_orders", force: :cascade do |t|
@@ -52,9 +53,10 @@ ActiveRecord::Schema.define(version: 20160305173951) do
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.string "name"
+    t.string  "username"
+    t.string  "password_digest"
+    t.string  "name"
+    t.integer "role",            default: 0
   end
 
   add_foreign_key "candy_orders", "candies"
