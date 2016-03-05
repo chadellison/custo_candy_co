@@ -8,7 +8,7 @@ class CartsController < ApplicationController
     session[:cart] = @cart.contents
 
     flash[:info] = "Cart updated with #{candy.title}"
-    redirect_to candies_path
+    redirect_to :back
   end
 
   def show
@@ -17,6 +17,7 @@ class CartsController < ApplicationController
 
   def update
     contents = @cart.contents
+    candy = Candy.find(params[:candy_id])
 
     if params[:operator] == "-"
       contents[params["candy_id"]] -= 1
@@ -24,6 +25,7 @@ class CartsController < ApplicationController
     else
       contents[params["candy_id"]] += 1
     end
+    flash[:success] = "Quantity for #{candy.title} has been changed"
     redirect_to cart_path
   end
 
