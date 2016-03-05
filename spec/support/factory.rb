@@ -3,6 +3,7 @@ FactoryGirl.define do
     title
     description
     price
+    status
     category_id nil
     image "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHDOSNxmatCFt8kQLujghKqW3dlmgvBhMrqBd747RP95UQTuDzRF7838s"
   end
@@ -17,6 +18,10 @@ FactoryGirl.define do
 
   sequence :price do |n|
     n
+  end
+
+  sequence :status do
+    "In stock"
   end
 
   factory :category do
