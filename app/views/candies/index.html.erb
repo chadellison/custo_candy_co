@@ -1,4 +1,9 @@
-<p><%= flash[:info] %></p>
+<p>
+  <% flash.each do |type, msg| %>
+    <%= content_tag :div, sanitize(msg), class: "flash_#{type} flash" %>
+  <% end %>
+</p>
+
 <% @candies.each do |candy| %>
 <div class="col s3">
   <div class="card small">
