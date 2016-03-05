@@ -4,8 +4,8 @@ RSpec.feature "User can see past order" do
   include ActionView::Helpers::NumberHelper
   it "User sees past order when they click on orders" do
     user = User.create(name: "Nate", username: "nate", password: "password")
-    candy1 = create(:candy)
-    candy2 = create(:candy)
+    candy1 = Candy.create(title: "chocolate", description: "good", price: 1000, status: "in stock", image: "path")
+    candy2 = Candy.create(title: "sour bears", description: "good", price: 2000, status: "retired", image: "path")
 
     visit "/"
 
@@ -54,11 +54,21 @@ RSpec.feature "User can see past order" do
     expect(page).to have_content "Status: #{order.status}"
     expect(page).to have_content "Item: #{candy1.title},
                                   Quantity: #{candy1_quantity},
-                                  Subtotal: #{price1}"
+                                  Subtotal: #{price1},
+                                  Status: #{candy1.status}"
     expect(page).to have_content "Item: #{candy2.title},
                                   Quantity: #{candy2_quantity},
-                                  Subtotal: #{price2}"
+                                  Subtotal: #{price2},
+                                  Status: #{candy2.status}"
     expect(page).to have_content "Total order price: #{number_to_currency(price)}"
     expect(page).to have_content "Ordered at: #{order.created_at}"
+
+    click_on "#{candy2.title}"
+
+    expect(page).to have_content "#{candy2.title}"
+
+    expect(current_path).to eq "/candies/#{candy2.id}"
+
+    expect(page).to have_content "Item no longer available"
   end
 end
