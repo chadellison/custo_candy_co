@@ -11,8 +11,13 @@ class OrdersController < ApplicationController
   end
 
   def create
+    if current_user
     @order = Order.create(status: "pending", user_id: session[:user_id])
     prepare_order(@order, params[:contents])
     redirect_to order_success_path
+    else
+      flash[:notice] = "You must login or register for an account before checking out"
+      redirect_to cart_path
+    end
   end
 end
