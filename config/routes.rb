@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:show]
-    resources :candies, only: [:index, :show, :edit, :update]
+    resources :candies, only: [:index, :show, :new, :create, :edit, :update]
   end
 
   get "/register", to: "users#new"
@@ -24,5 +24,6 @@ Rails.application.routes.draw do
   put "/cart", to: "carts#update"
   delete "/cart", to: "carts#destroy"
 
-  resources :orders
+  resources :orders, only: [:index, :show, :create]
+  get "/order_success", to: "order_success#show"
 end

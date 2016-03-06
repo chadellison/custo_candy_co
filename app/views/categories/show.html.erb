@@ -2,5 +2,5 @@
 <h3><%= @category.name %></h3>
 
 <% @category.candies.each do |candy| %>
-<%= render partial: 'partials/each_candy', locals: {candy: candy} %>
+  <%= render partial: 'partials/each_candy', locals: {candy: candy} %>
 <% end %>

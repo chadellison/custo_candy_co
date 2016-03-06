@@ -4,18 +4,17 @@ RSpec.feature "User can see past order" do
   include ActionView::Helpers::NumberHelper
   it "User sees past order when they click on orders" do
     user = User.create(name: "Nate", username: "nate", password: "password")
-    candy1 = Candy.create(title: "chocolate", description: "good", price: 1000, status: "in stock", image: "path")
-    candy2 = Candy.create(title: "sour bears", description: "good", price: 2000, status: "retired", image: "path")
+
+    candy1 = create(:candy)
+    candy2 = create(:candy)
+    candy2.update(status: "retired")
 
     visit "/"
 
     cart = Cart.new
     order = Order.create
 
-    cart.add_candy(candy1.id)
-    cart.add_candy(candy1.id)
-    cart.add_candy(candy2.id)
-    cart.add_candy(candy2.id)
+    [candy1, candy1, candy2, candy2].each { |candy| cart.add_candy(candy.id) }
 
     candy1_quantity = cart.contents[candy1.id.to_s]
     candy2_quantity = cart.contents[candy2.id.to_s]
@@ -33,8 +32,8 @@ RSpec.feature "User can see past order" do
     candy_order2 = CandyOrder.find_by(candy_id: candy2.id, order_id: order.id)
     candy_order2.update(quantity: candy2_quantity, sub_total: candy2_price)
 
-    price1 = number_to_currency(candy_order1.sub_total)
-    price2 = number_to_currency(candy_order2.sub_total)
+    price1 = number_to_currency(candy_order1.sub_total/100.0)
+    price2 = number_to_currency(candy_order2.sub_total/100.0)
 
     click_on "Login"
     fill_in "Username", with: "nate"
@@ -60,7 +59,7 @@ RSpec.feature "User can see past order" do
                                   Quantity: #{candy2_quantity},
                                   Subtotal: #{price2},
                                   Status: #{candy2.status}"
-    expect(page).to have_content "Total order price: #{number_to_currency(price)}"
+    expect(page).to have_content "Total order price: #{number_to_currency(price/100.0)}"
     expect(page).to have_content "Ordered at: #{order.created_at}"
 
     click_on "#{candy2.title}"

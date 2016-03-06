@@ -22,7 +22,7 @@
         <td><div id="<%= candy.id %>"><a class="waves-effect waves-light btn red"><%= button_to "Remove", cart_path(candy_id: candy.id), method: "delete" %></a></div></td>
         <td><%= candy.title %></td>
         <td><%= candy.description %></td>
-        <td><%= candy.price %></td>
+        <td><%= candy.to_dollars %></td>
         <td><%= quantity %></td>
         <td><a class="btn-floating btn-small waves-effect waves-light red center-align"><%= button_to "+", cart_path(candy_id: candy.id, operator: "+"), method: :put %></a></td>
         <td><a class="btn-floating btn-small waves-effect waves-light red center-align"><%= button_to "-", cart_path(candy_id: candy.id, operator: "-"), method: :put %></a></td>
@@ -31,6 +31,7 @@
     </tbody>
     </table>
     <h4>Total Price: <%= @cart.total_cost %></h4>
+    <%= button_to "Submit order", orders_path(contents: @cart.contents) %>
     <% else %>
       <h2>You have no items in your cart</h2>
     <% end %>
