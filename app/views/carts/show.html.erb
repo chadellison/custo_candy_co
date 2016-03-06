@@ -26,7 +26,7 @@
         <td><div id="<%= candy.id %>"><%= button_to "Remove", cart_path(candy_id: candy.id), method: "delete" %></div></td>
         <td><%= candy.title %></td>
         <td><%= candy.description %></td>
-        <td><%= candy.price %></td>
+        <td><%= candy.to_dollars %></td>
         <td><%= quantity %></td>
         <td><%= button_to "+", cart_path(candy_id: candy.id, operator: "+"), method: :put %></td>
         <td><%= button_to "-", cart_path(candy_id: candy.id, operator: "-"), method: :put %></td>
