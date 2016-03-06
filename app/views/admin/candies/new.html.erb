@@ -1,4 +1,5 @@
-<%= form_for(@candy, url: admin_candy_path) do |f| %>
+<%= flash[:error] %>
+<%= form_for(@candy, url: admin_candies_path) do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.label :description %>
