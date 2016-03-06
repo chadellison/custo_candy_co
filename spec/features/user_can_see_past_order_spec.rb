@@ -35,12 +35,16 @@ RSpec.feature "User can see past order" do
     price1 = number_to_currency(candy_order1.sub_total/100.0)
     price2 = number_to_currency(candy_order2.sub_total/100.0)
 
-    click_on "Login"
+    within("#header-bar") do
+      click_on "Login"
+    end
     fill_in "Username", with: "nate"
     fill_in "Password", with: "password"
     click_on "Sign in"
 
-    click_on "Orders"
+    within("#header-bar") do
+      click_on "Orders"
+    end
 
     expect("/orders").to eq current_path
 

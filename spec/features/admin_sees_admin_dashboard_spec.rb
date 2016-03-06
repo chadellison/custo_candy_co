@@ -6,7 +6,9 @@ RSpec.feature "Admin sees admin dashboard" do
 
     visit root_path
 
-    click_on "Login"
+    within("#header-bar") do
+      click_on "Login"
+    end
     fill_in "Username", with: admin.username.to_s
     fill_in "Password", with: "password"
     click_on "Sign in"
@@ -19,7 +21,9 @@ RSpec.feature "Admin sees admin dashboard" do
 
     visit root_path
 
-    click_on "Login"
+    within("#header-bar") do
+      click_on "Login"
+    end
     fill_in "Username", with: "bill"
     fill_in "Password", with: "password"
     click_on "Sign in"
@@ -30,7 +34,9 @@ RSpec.feature "Admin sees admin dashboard" do
 
     visit root_path
 
-    click_on "Logout"
+    within("#header-bar") do
+      click_on "Logout"
+    end
 
     visit admin_dashboard_path(user.id)
 
