@@ -40,7 +40,7 @@ RSpec.feature "User can submit order" do
 
     click_on "#{order.id}"
 
-    price = number_to_currency(candy_order.sub_total)
+    price = number_to_currency(candy_order.sub_total/100.0)
 
     expect(page).to have_content "Status: #{order.status}"
     expect(page).to have_content "Item: #{candy.title},
