@@ -1,8 +1,4 @@
-<p>
-  <% flash.each do |type, msg| %>
-    <%= content_tag :div, sanitize(msg), class: "flash_#{type} flash" %>
-  <% end %>
-</p>
+<%= render partial: 'partials/flash' %>
 
 <div>
   <% unless @cart.contents.empty? %>
@@ -10,7 +6,7 @@
   <table class="highlight">
     <thead>
      <tr>
-       <th><strong>Remove</strong></th>
+       <th><strong></strong></th>
        <th><strong>Candy</strong></th>
        <th><strong>Description</strong></th>
        <th><strong>Price</strong></th>
@@ -23,13 +19,13 @@
     <% @cart.contents.each do |id, quantity| %>
       <% candy = Candy.find(id) %>
       <tr>
-        <td><div id="<%= candy.id %>"><%= button_to "Remove", cart_path(candy_id: candy.id), method: "delete" %></div></td>
+        <td><div id="<%= candy.id %>"><a class="waves-effect waves-light btn red"><%= button_to "Remove", cart_path(candy_id: candy.id), method: "delete" %></a></div></td>
         <td><%= candy.title %></td>
         <td><%= candy.description %></td>
         <td><%= candy.to_dollars %></td>
         <td><%= quantity %></td>
-        <td><%= button_to "+", cart_path(candy_id: candy.id, operator: "+"), method: :put %></td>
-        <td><%= button_to "-", cart_path(candy_id: candy.id, operator: "-"), method: :put %></td>
+        <td><a class="btn-floating btn-small waves-effect waves-light red center-align"><%= button_to "+", cart_path(candy_id: candy.id, operator: "+"), method: :put %></a></td>
+        <td><a class="btn-floating btn-small waves-effect waves-light red center-align"><%= button_to "-", cart_path(candy_id: candy.id, operator: "-"), method: :put %></a></td>
       </tr>
     <% end %>
     </tbody>
