@@ -3,8 +3,14 @@ require "rails_helper"
 RSpec.feature "User can submit order" do
   include ActionView::Helpers::NumberHelper
   it "user sees all orders index page after submitting an order" do
-    user = User.create(name: "Nate", username: "nate", password: "password")
-    candy = Candy.create(title: "chocolate", description: "good", price: 1000, status: "in stock", image: "path")
+    user = User.create(name: "Nate",
+                       username: "nate",
+                       password: "password")
+    candy = Candy.create(title: "chocolate",
+                         description: "good",
+                         price: 1000,
+                         status: "in stock",
+                         image: "path")
 
     visit candies_path
 
@@ -26,7 +32,8 @@ RSpec.feature "User can submit order" do
 
     order = Order.find_by(user_id: user.id)
 
-    candy_order = CandyOrder.find_by(candy_id: candy.id, order_id: order.id)
+    candy_order = CandyOrder.find_by(candy_id: candy.id,
+                                     order_id: order.id)
 
     expect(current_path).to eq order_success_path
 
