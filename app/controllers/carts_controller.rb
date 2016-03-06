@@ -16,15 +16,10 @@ class CartsController < ApplicationController
   end
 
   def update
-    contents = @cart.contents
     candy = Candy.find(params[:candy_id])
 
-    if params[:operator] == "-"
-      contents[params["candy_id"]] -= 1
-      contents[params["candy_id"]] = 0 if contents[params["candy_id"]] < 0
-    else
-      contents[params["candy_id"]] += 1
-    end
+    adjust_quantity(params[:operator])
+
     flash[:success] = "Quantity for #{candy.title} has been changed"
     redirect_to cart_path
   end

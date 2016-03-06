@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   put "/cart", to: "carts#update"
   delete "/cart", to: "carts#destroy"
 
-  resources :orders
+  resources :orders, only: [:index, :show]
 end
