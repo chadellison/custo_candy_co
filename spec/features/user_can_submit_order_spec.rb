@@ -7,11 +7,6 @@ RSpec.feature "User can submit order" do
                        username: "nate",
                        password: "password")
     candy = create(:candy)
-    candy1 = Candy.create(title: "chocolate",
-                         description: "good",
-                         price: 1000,
-                         status: "in stock",
-                         image: "path")
 
     visit candies_path
 
