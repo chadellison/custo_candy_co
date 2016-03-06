@@ -77,8 +77,20 @@ RSpec.feature "admin can create candy" do
   end
 
   scenario "a non-admin sees error message" do
+    user = User.create(username: "bill", name: "bill", password: "password")
 
+    visit new_admin_candy_path
+    expect(page).to have_content "The page you were looking for doesn't exist."
+
+    visit root_path
+    click_on "Login"
+    fill_in "Username", with: "bill"
+    fill_in "Password", with: "password"
+    click_on "Sign in"
+
+    expect(current_path).to eq dashboard_path
+
+    visit new_admin_candy_path
+    expect(page).to have_content "The page you were looking for doesn't exist."
   end
 end
-
-#         - The price must be a valid decimal numeric value and greater than zero.
