@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:show]
-    resources :candies, only: [:index, :show, :edit, :update]
+    resources :candies, only: [:index, :show, :new, :create, :edit, :update]
   end
 
   get "/register", to: "users#new"

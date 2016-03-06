@@ -4,18 +4,17 @@ RSpec.feature "User can see past order" do
   include ActionView::Helpers::NumberHelper
   it "User sees past order when they click on orders" do
     user = User.create(name: "Nate", username: "nate", password: "password")
-    candy1 = Candy.create(title: "chocolate", description: "good", price: 1000, status: "in stock", image: "path")
-    candy2 = Candy.create(title: "sour bears", description: "good", price: 2000, status: "retired", image: "path")
+
+    candy1 = create(:candy)
+    candy2 = create(:candy)
+    candy2.update(status: "retired")
 
     visit "/"
 
     cart = Cart.new
     order = Order.create
 
-    cart.add_candy(candy1.id)
-    cart.add_candy(candy1.id)
-    cart.add_candy(candy2.id)
-    cart.add_candy(candy2.id)
+    [candy1, candy1, candy2, candy2].each { |candy| cart.add_candy(candy.id) }
 
     candy1_quantity = cart.contents[candy1.id.to_s]
     candy2_quantity = cart.contents[candy2.id.to_s]
