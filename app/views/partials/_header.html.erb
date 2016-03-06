@@ -1,6 +1,7 @@
 <div class="header primary-header red lighten-3">
 
   <header class='primary-header center-align'>
+    <i class="medium material-icons">shopping_cart<%= link_to cart_path %></i>
 
   <%= link_to "View Cart", cart_path %> Total items: <%= @cart.total %>
 

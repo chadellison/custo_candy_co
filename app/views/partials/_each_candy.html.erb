@@ -1,4 +1,21 @@
-<img src="<%= candy.image %>" />
-<h5><%= candy.title %> </h5>
-<p> <%= candy.description %> </p>
-<p><%= candy.price %></p>
+<div class="col s3">
+  <div class="card small">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="<%= candy.image %>">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4"><%= candy.title %><i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"><%= candy.price %><i class="material-icons right">close</i></span>
+      <p><%= candy.description %></p>
+    </div>
+  </div>
+  <% if candy.status == "retired" %>
+    <%= flash[:notice] = "Item no longer available" %>
+  <% elsif candy.status == "Out of Stock" %>
+    <%= flash[:notice] = "No longer available" %>
+  <% else %>
+    <div id="<%= candy.id %>" class="center-align"><%= button_to "Add to Cart", carts_path(candy_id: candy.id), class: "btn btn-success red" %></div>
+  <% end %>
+</div>
