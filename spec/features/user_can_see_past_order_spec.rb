@@ -32,8 +32,8 @@ RSpec.feature "User can see past order" do
     candy_order2 = CandyOrder.find_by(candy_id: candy2.id, order_id: order.id)
     candy_order2.update(quantity: candy2_quantity, sub_total: candy2_price)
 
-    price1 = number_to_currency(candy_order1.sub_total)
-    price2 = number_to_currency(candy_order2.sub_total)
+    price1 = number_to_currency(candy_order1.sub_total/100.0)
+    price2 = number_to_currency(candy_order2.sub_total/100.0)
 
     click_on "Login"
     fill_in "Username", with: "nate"
@@ -59,7 +59,7 @@ RSpec.feature "User can see past order" do
                                   Quantity: #{candy2_quantity},
                                   Subtotal: #{price2},
                                   Status: #{candy2.status}"
-    expect(page).to have_content "Total order price: #{number_to_currency(price)}"
+    expect(page).to have_content "Total order price: #{number_to_currency(price/100.0)}"
     expect(page).to have_content "Ordered at: #{order.created_at}"
 
     click_on "#{candy2.title}"
