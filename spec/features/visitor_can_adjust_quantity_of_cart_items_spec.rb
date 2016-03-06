@@ -2,10 +2,9 @@ require "rails_helper"
 
 RSpec.feature "user can adjust quantity of items in cart" do
   scenario "user sees adjusted quantity in cart" do
-    candy = Candy.create(title: "yum", description: "very yum", price: 10)
+    candy = Candy.create(title: "yum", description: "very yum", price: 10, category_id: 1)
 
     visit candies_path
-
     click_on "Add to Cart"
 
     visit cart_path
