@@ -4,7 +4,9 @@ RSpec.feature "user can login to account" do
   it "user can see user login welcome page after loggin in" do
     User.create(name: "Nate", username: "nate", password: "password")
     visit "/"
-    click_on "Login"
+    within("#header-bar") do
+      click_on "Login"
+    end
 
     expect("/login").to eq current_path
 

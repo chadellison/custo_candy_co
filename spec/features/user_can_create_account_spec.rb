@@ -3,7 +3,10 @@ require "rails_helper"
 RSpec.feature "user can create account" do
   it "user can see user login welcome page" do
     visit "/"
-    click_on "Create Account"
+    
+    within("#header-bar") do
+      click_on "Create Account"
+    end
 
     expect("/register").to eq current_path
 
