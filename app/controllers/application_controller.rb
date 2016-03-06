@@ -18,4 +18,21 @@ class ApplicationController < ActionController::Base
   def current_admin?
     current_user && current_user.admin?
   end
+
+  def prepare_order(order, contents)
+    contents.each do |id, quantity|
+      candy = Candy.find(id)
+      order.candies << candy
+      update_candy_order(order, contents)
+    end
+  end
+
+  def update_candy_order(order, cart_contents)
+    cart_contents.each do |id, quantity|
+      candy = Candy.find(id)
+      candy_order = CandyOrder.find_by(candy_id: id, order_id: order.id)
+      subtotal = candy.price * quantity.to_i
+      candy_order.update(quantity: quantity, sub_total: subtotal)
+    end
+  end
 end

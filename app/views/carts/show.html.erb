@@ -35,6 +35,7 @@
     </tbody>
     </table>
     <h4>Total Price: <%= @cart.total_cost %></h4>
+    <%= button_to "Submit order", orders_path(contents: @cart.contents) %>
     <% else %>
       <h2>You have no items in your cart</h2>
     <% end %>
