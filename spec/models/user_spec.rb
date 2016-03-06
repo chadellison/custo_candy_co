@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, type: :model do
   context "can have many orders" do
@@ -9,4 +9,3 @@ RSpec.describe User, type: :model do
     it { should define_enum_for(:role) }
   end
 end
-
