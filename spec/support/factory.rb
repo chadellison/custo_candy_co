@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :candy do
     title
     description
-    price
+    price 10
     status
     category_id 1
     image "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHDOSNxmatCFt8kQLujghKqW3dlmgvBhMrqBd747RP95UQTuDzRF7838s"
@@ -14,10 +14,6 @@ FactoryGirl.define do
 
   sequence :description do |n|
     "description #{n}"
-  end
-
-  sequence :price do |n|
-    n
   end
 
   sequence :status do

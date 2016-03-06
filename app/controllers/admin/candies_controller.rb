@@ -36,6 +36,12 @@ class Admin::CandiesController < Admin::AuthorizationController
   private
 
   def candy_params
-    params.require(:candy).permit(:title, :description, :price, :image, :status, :category_id)
+    params.require(:candy).permit(
+                                 :title,
+                                 :description,
+                                 :price,
+                                 :image,
+                                 :status,
+                                 :category_id)
   end
 end

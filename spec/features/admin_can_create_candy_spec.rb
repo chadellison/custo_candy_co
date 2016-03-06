@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.feature "admin can create candy" do
   scenario "admin sees all candies with the created candy" do
-    category = Category.create(name: "Chocolate")
-    admin = User.create(username: "jones", name: "jones", password: "password", role: 1)
+    category = create(:category)
+    User.create(username: "jones", name: "jones", password: "password", role: 1)
 
     visit root_path
     click_on "Login"
@@ -29,9 +29,8 @@ RSpec.feature "admin can create candy" do
     expect(page).to have_content "In Stock"
   end
 
-
   scenario "admin sees error message if field is left blank" do
-    admin = User.create(username: "jones", name: "jones", password: "password", role: 1)
+    User.create(username: "jones", name: "jones", password: "password", role: 1)
     visit root_path
     click_on "Login"
     fill_in "Username", with: "jones"
@@ -49,13 +48,12 @@ RSpec.feature "admin can create candy" do
     click_on "Create Candy"
 
     expect(page).to have_content "All fields are required"
-
   end
 
   scenario "admin sees default image if one is not entered" do
-    admin = User.create(username: "jones", name: "jones", password: "password", role: 1)
+    User.create(username: "jones", name: "jones", password: "password", role: 1)
     category = Category.create(name: "Chocolate")
-    default_image = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR7PwjqnGRs8WnjryyEr8MZuI1YK7X_qfPLy6tMrdxnEHtmivVbzQ"
+    "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR7PwjqnGRs8WnjryyEr8MZuI1YK7X_qfPLy6tMrdxnEHtmivVbzQ"
 
     visit root_path
     click_on "Login"
@@ -77,7 +75,7 @@ RSpec.feature "admin can create candy" do
   end
 
   scenario "a non-admin sees error message" do
-    user = User.create(username: "bill", name: "bill", password: "password")
+    User.create(username: "bill", name: "bill", password: "password")
 
     visit new_admin_candy_path
     expect(page).to have_content "The page you were looking for doesn't exist."
