@@ -33,12 +33,12 @@ RSpec.feature "User can submit order" do
     expect(current_path).to eq order_success_path
 
     expect(page).to have_content "Your order was successful"
-    
+
     within("#header-bar") do
       click_on "Orders"
     end
 
-    expect(page).to have_content "Order #{order.id} #{order.created_at}"
+    expect(page).to have_content "Order #{order.id} #{order.format_date}"
 
     click_on "#{order.id}"
 
