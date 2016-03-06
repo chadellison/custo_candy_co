@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe Order, type: :model do
-  describe Order do
   context "can have many candies" do
     it { should have_many(:candy_orders) }
     it { should have_many(:candies) }
