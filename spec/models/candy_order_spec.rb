@@ -19,7 +19,7 @@ RSpec.describe CandyOrder, type: :model do
 
   context "finds candy title" do
     it "returns candy title" do
-      candy = Candy.create(title: "yum")
+      candy = create(:candy)
       order = Order.create(status: "pending")
       order.candies << candy
       candy_order = CandyOrder.find_by(candy_id: candy.id)
@@ -30,7 +30,8 @@ RSpec.describe CandyOrder, type: :model do
 
   context "finds candy status" do
     it "returns candy status" do
-      candy = Candy.create(title: "yum", status: "retired")
+      candy = create(:candy)
+      candy.update(status: "retired")
       order = Order.create(status: "pending")
       order.candies << candy
       candy_order = CandyOrder.find_by(candy_id: candy.id)
