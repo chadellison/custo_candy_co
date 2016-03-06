@@ -6,7 +6,9 @@ RSpec.feature "admin can create candy" do
     User.create(username: "jones", name: "jones", password: "password", role: 1)
 
     visit root_path
-    click_on "Login"
+    within("#header-bar") do
+      click_on "Login"
+    end
     fill_in "Username", with: "jones"
     fill_in "Password", with: "password"
     click_on "Sign in"
@@ -32,7 +34,9 @@ RSpec.feature "admin can create candy" do
   scenario "admin sees error message if field is left blank" do
     User.create(username: "jones", name: "jones", password: "password", role: 1)
     visit root_path
-    click_on "Login"
+    within("#header-bar") do
+      click_on "Login"
+    end
     fill_in "Username", with: "jones"
     fill_in "Password", with: "password"
     click_on "Sign in"
@@ -56,7 +60,9 @@ RSpec.feature "admin can create candy" do
     "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR7PwjqnGRs8WnjryyEr8MZuI1YK7X_qfPLy6tMrdxnEHtmivVbzQ"
 
     visit root_path
-    click_on "Login"
+    within("#header-bar") do
+      click_on "Login"
+    end
     fill_in "Username", with: "jones"
     fill_in "Password", with: "password"
     click_on "Sign in"
@@ -81,7 +87,9 @@ RSpec.feature "admin can create candy" do
     expect(page).to have_content "The page you were looking for doesn't exist."
 
     visit root_path
-    click_on "Login"
+    within("#header-bar") do
+      click_on "Login"
+    end
     fill_in "Username", with: "bill"
     fill_in "Password", with: "password"
     click_on "Sign in"

@@ -6,7 +6,9 @@ RSpec.feature "admin can edit candies" do
     User.create(username: "jones", name: "jones", password: "password", role: 1)
 
     visit root_path
-    click_on "Login"
+    within("#header-bar") do
+      click_on "Login"
+    end
     fill_in "Username", with: "jones"
     fill_in "Password", with: "password"
     click_on "Sign in"
