@@ -9,7 +9,7 @@ class Candy < ActiveRecord::Base
   validates :category_id, presence: true
 
   def currency
-    price / 100.0
+    price / 100.0 if price
   end
 
   def to_dollars
