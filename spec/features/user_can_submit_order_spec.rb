@@ -6,7 +6,8 @@ RSpec.feature "User can submit order" do
     user = User.create(name: "Nate",
                        username: "nate",
                        password: "password")
-    candy = Candy.create(title: "chocolate",
+    candy = create(:candy)
+    candy1 = Candy.create(title: "chocolate",
                          description: "good",
                          price: 1000,
                          status: "in stock",
@@ -26,8 +27,7 @@ RSpec.feature "User can submit order" do
     click_on "Sign in"
 
     visit "/cart"
-    expect(page).to have_content "chocolate"
-
+    expect(page).to have_content candy.title
     click_on "Submit order"
 
     order = Order.find_by(user_id: user.id)
