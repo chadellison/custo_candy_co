@@ -7,6 +7,7 @@ class Candy < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
   validates :description, presence: true
   validates :category_id, presence: true
+  validates :status, presence: true
 
   def currency
     price / 100.0 if price
