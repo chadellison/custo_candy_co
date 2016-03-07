@@ -14,7 +14,8 @@ class OrdersController < ApplicationController
   def create
     if current_user
     @order = Order.create(status: "pending", user_id: session[:user_id])
-    prepare_order(@order, params[:contents])
+    @cart = Cart.new(params[:contents])
+    OrderProcessor.new(@order, @cart).prepare_order
     session[:cart] = {}
     redirect_to order_success_path
     else
