@@ -25,7 +25,7 @@
         <td><%= candy.to_dollars %></td>
         <td><%= quantity %></td>
         <td><a class="btn-floating btn-small waves-effect waves-light red center-align"><%= button_to "+", cart_path(candy_id: candy.id, operator: "+"), method: :put %></a></td>
-        <td><a class="btn-floating btn-small waves-effect waves-light red center-align"><%= button_to "-", cart_path(candy_id: candy.id, operator: "-"), method: :put %></a></td>
+        <td><a class="btn-floating btn-small waves-effect waves-light red center-align"><%= button_to "-", cart_path(candy_id: candy.id, operator: "-"), method: :put unless quantity == 1 %></a></td>
       </tr>
     <% end %>
     </tbody>
