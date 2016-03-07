@@ -48,7 +48,7 @@ RSpec.feature "User can see past order" do
 
     expect("/orders").to eq current_path
 
-    expect(page).to have_content "Order #{order.id} #{order.created_at}"
+    expect(page).to have_content "Order #{order.id} #{order.format_date}"
 
     click_on "#{order.id}"
 
@@ -64,7 +64,7 @@ RSpec.feature "User can see past order" do
                                   Subtotal: #{price2},
                                   Status: #{candy2.status}"
     expect(page).to have_content "Total order price: #{number_to_currency(price/100.0)}"
-    expect(page).to have_content "Ordered at: #{order.created_at}"
+    expect(page).to have_content "Ordered at: #{order.format_date}"
 
     click_on "#{candy2.title}"
 
