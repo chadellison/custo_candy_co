@@ -1,5 +1,6 @@
 <h3>Rate this Candy</h3>
 <%= form_for([@candy, @rating], url: ratings_path(@candy.id)) do |f| %>
+<%= f.hidden_field :candy_id %>
 <%= f.label :rating %>
 <%= f.text_field :rating %>
 <%= f.submit "Submit" %>
