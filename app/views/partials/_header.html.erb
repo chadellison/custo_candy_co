@@ -1,11 +1,13 @@
 <div class="header primary-header red lighten-3">
 
   <header class='primary-header center-align'>
-    <i class="medium material-icons">shopping_cart<%= link_to cart_path %></i>
+    <div class=" container right-align">
+      <i class="medium material-icons">shopping_cart</i>
+      <p><%= link_to "View Cart", cart_path %> Total items: <%= @cart.total %></p>
+    </div>
 
     <h1 class="title123">Custo Candy Co.</h1>
 
-    <p><%= link_to "View Cart", cart_path %> Total items: <%= @cart.total %></p>
 
   </header>
     <div id="header-bar">

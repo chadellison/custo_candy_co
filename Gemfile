@@ -30,6 +30,10 @@ gem 'materialize-sass'
 
 gem 'figaro'
 
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+
+gem 'aws-sdk', '>= 2.0.0'
+
 # Use Unicorn as the app server
 gem 'unicorn'
 
