@@ -26,4 +26,7 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:index, :show, :create]
   get "/order_success", to: "order_success#show"
+
+  get "/custom_candies", to: "custom_candy#new"
+  post "/custom_candies", to: "custom_candy#create"
 end
