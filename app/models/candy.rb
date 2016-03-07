@@ -18,7 +18,7 @@ class Candy < ActiveRecord::Base
     number_to_currency(currency)
   end
 
-  def rating
-    (ratings.all.map { |r| r.rating }.reduce(0, :+).to_f / ratings.count).round(2) 
+  def average_rating
+    (ratings.sum(:rating) / ratings.count.to_f).round(2) if ratings.last
   end
 end

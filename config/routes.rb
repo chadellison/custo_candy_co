@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  resources :candies, only: [:index, :show, :edit, :update]
+  resources :candies, only: [:index, :show]
 
   resources :categories, only: [:show, :index]
+
+  resources :ratings, only: [:new, :update]
 
   namespace :admin do
     resources :dashboard, only: [:show]
