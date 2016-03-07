@@ -1,6 +1,5 @@
 class Candy < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
-
   has_many :candy_orders
   has_many :orders, through: :candy_orders
   has_many :ratings
@@ -9,6 +8,14 @@ class Candy < ActiveRecord::Base
   validates :description, presence: true
   validates :category_id, presence: true
   validates :status, presence: true
+
+  before_save :set_image
+
+  def set_image
+    if image.nil? || image.empty?
+      self.image = "http://www.travelandleisure.com/sites/default/files/styles/1600x1000/public/americancandy1015.jpg"
+    end
+  end
 
   def currency
     price / 100.0 if price

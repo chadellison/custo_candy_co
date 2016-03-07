@@ -50,6 +50,8 @@ group :development, :test do
   gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'mocha'
+  gem 'pry'
+  gem 'pry-nav'
 end
 
 group :development do
