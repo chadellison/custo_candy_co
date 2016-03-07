@@ -19,6 +19,10 @@ class Candy < ActiveRecord::Base
   end
 
   def average_rating
-    (ratings.sum(:rating) / ratings.count.to_f).round(2) if ratings.last
+    if ratings.last
+      (ratings.sum(:rating) / ratings.count.to_f).round(2).to_s + " out of 5"
+    else
+      "Candy has not yet been rated"
+    end
   end
 end

@@ -23,4 +23,14 @@ RSpec.feature "user can rate a product" do
 
     expect(page).to have_content "Rating: 3.5 out of 5"
   end
+
+  scenario "user sees not rated message if candy has no ratings" do
+    create(:candy)
+
+    visit root_path
+    within("#header-bar") do
+      click_on "Candy"
+    end
+    expect(page).to have_content "Rating: Candy has not yet been rated"
+  end
 end
