@@ -9,7 +9,7 @@ class RatingsController < ApplicationController
     redirect_to candies_path
   end
 
-  # def rating_params
-  #   params.require(:rating).permit(:rating, :candy_id)
-  # end
+  def rating_params
+    params.require(:rating).permit(:rating, :format)
+  end
 end

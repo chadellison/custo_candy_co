@@ -17,7 +17,7 @@ RSpec.describe Candy, type: :model do
 
   it "has many ratings" do
     candy = create(:candy)
-    rating = Rating.create(rating: 3, candy_id: candy.id)
+    Rating.create(rating: 3, candy_id: candy.id)
     assert candy.ratings
   end
 end

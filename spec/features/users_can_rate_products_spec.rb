@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "user can rate a product" do
   scenario "user sees average rating of each candy" do
-    candy = create(:candy)
+    create(:candy)
     visit root_path
 
     within("#header-bar") do
