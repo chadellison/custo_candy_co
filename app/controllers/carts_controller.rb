@@ -7,7 +7,7 @@ class CartsController < ApplicationController
     @cart.add_candy(candy.id)
     session[:cart] = @cart.contents
 
-    flash[:info] = "Cart updated with #{candy.title}"
+    flash[:info] = "Cart updated with #{path(candy)}"
     redirect_to :back
   end
 
@@ -20,7 +20,7 @@ class CartsController < ApplicationController
 
     adjust_quantity(params[:operator])
 
-    flash[:success] = "Quantity for #{candy.title} has been changed"
+    flash[:success] = "Quantity for #{path(candy)} has been changed"
     redirect_to cart_path
   end
 
