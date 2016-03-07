@@ -6,8 +6,7 @@ module CartsHelper
   def adjust_quantity(operator)
     contents = @cart.contents
     if operator == "-"
-      contents[params["candy_id"]] -= 1
-      contents[params["candy_id"]] = 0 if contents[params["candy_id"]] < 0
+      contents[params["candy_id"]] -= 1 unless contents[params["candy_id"]] == 1
     else
       contents[params["candy_id"]] += 1
     end

@@ -7,7 +7,7 @@
       <span class="card-title activator grey-text text-darken-4"><%= candy.title %><i class="material-icons right">more_vert</i></span>
     </div>
     <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4"><%= candy.price %><i class="material-icons right">close</i></span>
+      <span class="card-title grey-text text-darken-4"><%= candy.to_dollars %><i class="material-icons right">close</i></span>
       <p><%= candy.description %></p>
       <p><%= link_to "Rating: #{candy.average_rating}", new_rating_path(candy_id: candy.id) %></p>
     </div>

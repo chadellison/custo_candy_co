@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @candy_orders = @order.candy_orders
-    @total_price = CandyOrder.calculate_total_price(@candy_orders)
   end
 
   def create

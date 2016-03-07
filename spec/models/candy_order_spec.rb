@@ -7,14 +7,6 @@ RSpec.describe CandyOrder, type: :model do
       candy_order = CandyOrder.new(sub_total: 5000)
       expect(candy_order.to_dollars).to eq("$50.00")
     end
-
-    it "sum all subtotals" do
-      candy_order1 = CandyOrder.create(sub_total: 5000)
-      candy_order2 = CandyOrder.create(sub_total: 5000)
-      candy_orders = [candy_order1, candy_order2]
-      total = CandyOrder.calculate_total_price(candy_orders)
-      expect(total).to eq "$100.00"
-    end
   end
 
   context "finds candy title" do
