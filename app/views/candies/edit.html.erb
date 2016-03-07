@@ -1,0 +1,11 @@
+<h3>Rate this Candy</h3>
+<%= form_for(@candy) do |f| %>
+<%= f.label :rating %>
+<%= f.text_field :rating %>
+<%= f.submit "Submit" %>
+<% end %>
+
+<p>Ratings<p>
+<% @candy.ratings.each do |rating| %>
+  <p><%= rating.rating %></p>
+<% end %>

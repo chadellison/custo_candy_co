@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  resources :candies, only: [:index, :show]
+  resources :candies, only: [:index, :show, :edit, :update]
 
   resources :categories, only: [:show, :index]
 

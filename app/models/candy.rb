@@ -3,6 +3,7 @@ class Candy < ActiveRecord::Base
 
   has_many :candy_orders
   has_many :orders, through: :candy_orders
+  has_many :ratings
 
   validates :title, presence: true, uniqueness: true
   validates :description, presence: true
@@ -15,5 +16,9 @@ class Candy < ActiveRecord::Base
 
   def to_dollars
     number_to_currency(currency)
+  end
+
+  def rating
+    (ratings.all.map { |r| r.rating }.reduce(0, :+).to_f / ratings.count).round(2) 
   end
 end

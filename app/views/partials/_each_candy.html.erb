@@ -9,6 +9,7 @@
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4"><%= candy.price %><i class="material-icons right">close</i></span>
       <p><%= candy.description %></p>
+      <p><%= link_to "Rating: #{candy.rating} out of 5", edit_candy_path(candy.id) %></p>
     </div>
   </div>
   <% if candy.status == "retired" %>
