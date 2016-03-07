@@ -8,7 +8,7 @@
   <%= f.label :image %>
   <%= f.text_field :image %>
   <%= f.label :status %>
-  <%= f.text_field :status %>
+  <%= f.collection_select(:status, Candy.all, :id, :status) %>
   <%= f.label :category_id %>
   <%= f.text_field :category_id %>
   <%= f.submit %>
