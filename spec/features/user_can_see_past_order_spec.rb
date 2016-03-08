@@ -7,7 +7,7 @@ RSpec.feature "User can see past order" do
 
     candy1 = create(:candy)
     candy2 = create(:candy)
-    candy2.update(status: "retired")
+    candy2.update(status: "Discontinued")
 
     visit "/"
 
