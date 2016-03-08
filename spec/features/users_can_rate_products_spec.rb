@@ -10,8 +10,9 @@ RSpec.feature "user can rate a product" do
     end
 
     click_on "Rating:"
-    expect(page).to have_content "Rate this Candy"
+    expect(page).to have_content "Review this Candy"
     select "4", from: "Rating"
+    fill_in "Review", with: "tastey!"
     click_on "Submit"
 
     expect(current_path).to eq candies_path
@@ -24,7 +25,7 @@ RSpec.feature "user can rate a product" do
     expect(page).to have_content "Rating: 3.5 out of 5"
   end
 
-  scenario "user sees not rated message if candy has no ratings" do
+  scenario "user sees not reviewed message if candy has no Reviews" do
     create(:candy)
 
     visit root_path
