@@ -8,11 +8,11 @@ class CandyOrder < ActiveRecord::Base
     number_to_currency(sub_total/100.0)
   end
 
-  def candy_title(candy_id)
-    Candy.find(candy_id).title
+  def candy_title
+    candy.title
   end
 
-  def candy_status(candy_id)
-    Candy.find(candy_id).status
+  def candy_status
+    candy.status
   end
 end

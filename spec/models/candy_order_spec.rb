@@ -15,7 +15,7 @@ RSpec.describe CandyOrder, type: :model do
       order = Order.create(status: "pending")
       order.candies << candy
       candy_order = CandyOrder.find_by(candy_id: candy.id)
-      result = candy_order.candy_title(candy.id)
+      result = candy_order.candy_title
       expect(candy.title).to eq result
     end
   end
@@ -27,7 +27,7 @@ RSpec.describe CandyOrder, type: :model do
       order = Order.create(status: "pending")
       order.candies << candy
       candy_order = CandyOrder.find_by(candy_id: candy.id)
-      result = candy_order.candy_status(candy.id)
+      result = candy_order.candy_status
       expect(candy.status).to eq result
     end
   end

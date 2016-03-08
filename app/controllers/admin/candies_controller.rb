@@ -13,7 +13,6 @@ class Admin::CandiesController < Admin::AuthorizationController
 
   def create
     @candy = Candy.create(candy_params)
-    @candy.update(image: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR7PwjqnGRs8WnjryyEr8MZuI1YK7X_qfPLy6tMrdxnEHtmivVbzQ") if params[:image].nil?
     if @candy.save
       flash[:success] = "#{@candy.title} created!"
       redirect_to admin_candies_path

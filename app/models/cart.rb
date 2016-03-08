@@ -23,13 +23,15 @@ class Cart
     number_to_currency(total_amount)
   end
 
-  def find_candies(contents)
-    contents.map do |id, _|
-      Candy.find(id)
-    end
-  end
-
   def remove_candy(candy)
     contents.delete(candy.id.to_s)
+  end
+
+  def adjust_quantity(operator, candy_id)
+    if operator == "-"
+      contents[candy_id.to_s] -= 1 unless contents[candy_id] == 1
+    else
+      contents[candy_id.to_s] += 1
+    end
   end
 end
