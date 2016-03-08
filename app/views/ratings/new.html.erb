@@ -2,11 +2,13 @@
 <%= form_for([@candy, @rating], url: ratings_path(@candy.id)) do |f| %>
 <%= f.hidden_field :candy_id %>
 <%= f.label :rating %>
-<%= f.text_field :rating %>
-<%= f.submit "Submit" %>
-<% end %>
+<%= f.select :rating, [['5', '5'],
+                       ['4', '4'],
+                       ['3', '3'],
+                       ['2', '2'],
+                       ['1', '1']] %>
 
-<p>Ratings<p>
-<% @candy.ratings.each do |rating| %>
-  <p><%= rating.rating %></p>
+<!-- <%= f.label :rating %>
+<%= f.text_field :rating %> -->
+<%= f.submit "Submit" %>
 <% end %>
