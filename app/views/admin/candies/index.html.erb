@@ -1,10 +1,21 @@
 <%= flash[:success] %>
 <h3>Candies</h3>
+
 <% @candies.each do |candy| %>
-  <img class="candy-image" src="<%= candy.image %>"/>
-  <p><%= link_to candy.title, admin_candy_path(candy.id) %></p>
-  <p><%= candy.description %></p>
-  <p><%= candy.to_dollars %></p>
-  <p><%= candy.status %></p>
-  <%= button_to "Edit", edit_admin_candy_path(candy.id), method: :get %>
+  <div class="col s3">
+    <div class="card small">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="<%= candy.image %>">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4"><%= candy.title %><i class="material-icons right">more_vert</i></span>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4"><%= candy.to_dollars %><i class="material-icons right">close</i></span>
+        <p><%= candy.description %></p>
+        <p><%= link_to "Rating: #{candy.average_rating}", new_rating_path(candy_id: candy.id) %></p>
+      </div>
+    </div>
+    <div id="<%= candy.id %>" class="center-align"><%= candy.status %> <%= link_to "#{candy.title}", admin_candy_path(candy.id) %><br><%= button_to "Edit", edit_admin_candy_path(candy.id), method: :get, class: "btn btn-success red" %></div>
+  </div>
 <% end %>

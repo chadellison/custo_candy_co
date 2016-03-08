@@ -8,8 +8,8 @@
   <%= f.label :image %>
   <%= f.text_field :image %>
   <%= f.label :status %>
-  <%= f.text_field :status %>
+  <%= f.select :status, [['In Stock', 'In Stock'], ['Out of Stock', 'Out of Stock'], ['Discontinued', 'Discontinued']] %>
   <%= f.label :category_id %>
-  <%= f.text_field :category_id %>
-  <%= f.submit %>
+  <%= f.collection_select :category_id, Category.all, :id, :name %>
+  <%= f.submit "Update Candy", class: "btn btn-success red" %>
 <% end %>
