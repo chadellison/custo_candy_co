@@ -17,8 +17,7 @@ class CartsController < ApplicationController
 
   def update
     candy = Candy.find(params[:candy_id])
-
-    adjust_quantity(params[:operator])
+    @cart.adjust_quantity(params[:operator], candy.id)
 
     flash[:success] = "Quantity for #{path(candy)} has been changed"
     redirect_to cart_path
