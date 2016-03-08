@@ -32,4 +32,12 @@ class Candy < ActiveRecord::Base
       "Candy has not yet been rated"
     end
   end
+
+  def retired?
+    status == "Discontinued"
+  end
+
+  def out_of_stock?
+    status == "Out of Stock"
+  end
 end

@@ -3,9 +3,9 @@
 <h5><%= @candy.title %> </h5>
 <p> <%= @candy.description %> </p>
 <p><%= @candy.to_dollars %></p>
-<% if @candy.status == "retired" %>
+<% if @candy.retired? %>
   <%= flash[:notice] = "Item no longer available" %>
-<% elsif @candy.status == "Out of Stock" %>
+<% elsif @candy.out_of_stock? %>
   <%= flash[:notice] = "No longer available" %>
 <% else %>
   <div id="<%= @candy.id %>" class="center-align"><%= button_to "Add to Cart", carts_path(candy_id: @candy.id), class: "btn btn-success red" %></div>
