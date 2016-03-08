@@ -31,14 +31,14 @@ RSpec.feature "admin can edit candies" do
     fill_in "Title", with: "chocolate bar"
     fill_in "Description", with: "It is juicy"
     fill_in "Price", with: "1000"
-    fill_in "Status", with: "Out of stock"
+    select "Out of Stock", from: "Status"
     fill_in "Image", with: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR7PwjqnGRs8WnjryyEr8MZuI1YK7X_qfPLy6tMrdxnEHtmivVbzQ"
     click_on "Update Candy"
 
     expect(page).to have_content "chocolate bar"
     expect(page).to have_content "It is juicy"
     expect(page).to have_content "$10.00"
-    expect(page).to have_content "Out of stock"
+    expect(page).to have_content "Out of Stock"
     expect(page).to have_css "img[src*='https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR7PwjqnGRs8WnjryyEr8MZuI1YK7X_qfPLy6tMrdxnEHtmivVbzQ']"
   end
 end

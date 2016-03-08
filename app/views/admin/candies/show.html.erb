@@ -1,6 +1,7 @@
 <%= @candy.title %>
 <img class="candy-image" src="<%= @candy.image %>"/>
-<p><%= link_to "Back to Candies", admin_candies_path %></p>
 <p><%= @candy.description %></p>
 <p><%= @candy.to_dollars %></p>
 <p><%= @candy.status %></p>
+<p><%= link_to "Back to Candies", admin_candies_path %></p>
+<div id="<%= @candy.id %>" class="center-align"><%= button_to "Edit", edit_admin_candy_path(@candy.id), method: :get, class: "btn btn-success red" %></div>
