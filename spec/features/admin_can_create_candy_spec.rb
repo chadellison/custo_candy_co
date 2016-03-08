@@ -20,7 +20,7 @@ RSpec.feature "admin can create candy" do
     fill_in "Price", with: "400"
     fill_in "Image", with: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR7PwjqnGRs8WnjryyEr8MZuI1YK7X_qfPLy6tMrdxnEHtmivVbzQ"
     select "In Stock", from: "Status"
-    select "#{category.name}", from: "Category"
+    select category.name.to_s, from: "Category"
 
     click_on "Create Candy"
 
@@ -73,7 +73,7 @@ RSpec.feature "admin can create candy" do
     fill_in "Description", with: "lushous and pretentious"
     fill_in "Price", with: "400"
     select "In Stock", from: "Status"
-    select "#{category.name}", from: "Category"
+    select category.name.to_s, from: "Category"
 
     click_on "Create Candy"
     expect(page).to have_css("img[src*='http://www.travelandleisure.com/sites/default/files/styles/1600x1000/public/americancandy1015.jpg']")
