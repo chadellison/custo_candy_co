@@ -9,7 +9,7 @@
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4"><%= candy.to_dollars %><i class="material-icons right">close</i></span>
       <p><%= candy.description %></p>
-      <p><%= link_to "Rating: #{candy.average_rating}", new_rating_path(candy_id: candy.id) %></p>
+      <p><%= link_to "Rating: #{candy.average_rating}", new_review_path(candy_id: candy.id) %></p>
     </div>
   </div>
   <% if candy.status == "retired" %>
