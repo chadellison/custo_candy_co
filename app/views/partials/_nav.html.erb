@@ -1,11 +1,10 @@
-<nav class="nav primary-nav">
-  <ul>
-    <li><%= link_to "Home", root_path %></li>
-    <li><%= link_to "Create your Candy", new_custom_candy_path %></li>
-    <li><%= link_to "Candy", candies_path %></li>
-    <li><%= link_to "Candy Categories", categories_path %></li>
-
-
+<nav>
+  <div class="nav-wrapper">
+    <ul id="nav-mobile">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Candy", candies_path %></li>
+        <li><%= link_to "Candy Categories", categories_path %></li>
+        <div class="right nav-bar-padding">
       <% if current_user %>
         <li><%= link_to "Logout", logout_path, method: :delete %></li>
         <li><%= link_to "Orders", orders_path %></li>
@@ -13,5 +12,10 @@
         <li><%= link_to "Login", login_path %></li>
         <li><%= link_to "Create Account",register_path %></li>
       <% end %>
-  </ul>
+        <li><%= link_to "View Cart", cart_path %></li>
+        <li>Total items: <%= @cart.total %></li>
+        <li></li>
+      </div>
+    </ul>
+  </div>
 </nav>

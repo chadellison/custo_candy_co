@@ -4,6 +4,8 @@ class Candy < ActiveRecord::Base
   has_many :orders, through: :candy_orders
   has_many :reviews
 
+  belongs_to :category
+
   validates :title, presence: true, uniqueness: true
   validates :description, presence: true
   validates :category_id, presence: true

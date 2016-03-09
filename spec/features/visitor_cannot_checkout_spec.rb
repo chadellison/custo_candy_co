@@ -10,8 +10,9 @@ RSpec.feature "User can add candy to cart" do
     end
 
     price = candy1.to_dollars
-
-    click_on "View Cart"
+    within("#header-bar") do
+      click_on "View Cart"
+    end
     expect(current_path).to eq cart_path
     expect(page).to have_content candy1.title
     expect(page).to have_content candy1.description
