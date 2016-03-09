@@ -9,15 +9,11 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-  <%= render "partials/header" %>
-
-<div class="container row">
-  <%= yield %>
-</div>
-
-  <%= render "partials/footer" %>
-
-</body>
+  <body>
+      <%= render "partials/header" %>
+    <div class="container row">
+      <%= yield %>
+    </div>
+      <%= render "partials/footer" %>
+  </body>
 </html>
