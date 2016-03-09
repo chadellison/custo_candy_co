@@ -6,7 +6,7 @@ RSpec.feature "user can see list of all categories" do
     gummie = create(:category)
 
     visit root_path
-    within(".header") do
+    within("#header-bar") do
       click_on "Candy Categories"
     end
     expect(page).to have_content chocolate.name

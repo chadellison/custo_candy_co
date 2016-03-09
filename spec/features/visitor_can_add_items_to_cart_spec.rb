@@ -22,8 +22,9 @@ RSpec.feature "User can add candy to cart" do
     total_price = (candy1.price + candy3.price)
 
     price = candy1.number_to_currency(total_price / 100.0)
-
-    click_on "View Cart"
+    within("#header-bar") do
+      click_on "View Cart"
+    end
     expect(current_path).to eq cart_path
     expect(page).to have_content candy1.title
     expect(page).to have_content candy1.description
