@@ -1,5 +1,5 @@
 <%= flash[:error] %>
-<%= form_for(@candy, url: admin_candies_path) do |f| %>
+<%= form_for(@candy, multipart: true, url: admin_candies_path) do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.label :description %>
@@ -7,7 +7,7 @@
   <%= f.label :price %>
   <%= f.text_field :price %>
   <%= f.label :image %>
-  <%= f.text_field :image %>
+  <%= f.file_field :image %><br>
   <%= f.label :status %>
   <%= f.select :status, [['In Stock', 'In Stock'], ['Out of Stock', 'Out of Stock'], ['Discontinued', 'Discontinued']] %>
   <%= f.label :category_id %>

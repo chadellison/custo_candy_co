@@ -1,4 +1,5 @@
 class Order < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
   has_many :candy_orders
   has_many :candies, through: :candy_orders
   belongs_to :user
