@@ -18,7 +18,6 @@ RSpec.feature "visitor can create custom candy" do
     click_on "Create Candy"
 
     expect(custom_candy_path(CustomCandy.last.id)).to eq current_path
-
     expect(page).to have_content "Dank Goodness"
     expect(page).to have_content "Your Custom Candy"
     expect(page).to have_content "Chocolate: Milk Chocolate"

@@ -5,7 +5,6 @@ RSpec.feature "user can click shopping cart with no items" do
     visit candies_path
 
     click_on "View Cart"
-
     result = "You have no items in your cart"
     expect(page).to have_content result
   end

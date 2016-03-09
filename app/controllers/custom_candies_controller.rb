@@ -19,6 +19,6 @@ class CustomCandiesController < ApplicationController
   private
 
   def custom_candy_params
-    params.require(:custom_candy).permit(:category, :fillings, :nuts, :fruits, :spices, :name)
+    params.require(:custom_candy).permit(:category, :fillings, :nuts, :fruits, :spices, :title)
   end
 end

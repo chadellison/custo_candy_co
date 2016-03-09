@@ -1,6 +1,6 @@
 <h1>Your Custom Candy</h1>
 <p>
-  <%= @custom_candy.name %>
+  <%= @custom_candy.title %>
 </p>
 <p>
   Chocolate: <%= @custom_candy.category %>
@@ -30,4 +30,3 @@ Custom Candy Price: <%= @custom_candy.to_dollars %>
 </p>
 <%= link_to "Create another Candy", new_custom_candy_path %>
 <%= link_to "Add to cart", carts_path(id: @custom_candy.id), method: :post %>
-

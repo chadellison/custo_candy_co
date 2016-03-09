@@ -9,8 +9,8 @@ RSpec.feature "user can rate a product" do
       click_on "Candy"
     end
 
-    click_on "Rating:"
-    expect(page).to have_content "Rate this Candy"
+    click_on "Review:"
+    expect(page).to have_content "Review this Candy"
     fill_in "Rating", with: "4"
     click_on "Submit"
 

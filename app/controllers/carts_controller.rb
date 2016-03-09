@@ -3,7 +3,6 @@ class CartsController < ApplicationController
   include CartsHelper
 
   def create
-    byebug
     if request.referrer.include?("custom_candies")
       candy = CustomCandy.find(params[:id])
       @cart.add_candy(candy.id, "custom")

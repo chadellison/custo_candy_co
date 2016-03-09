@@ -1,0 +1,12 @@
+<h3>Rate this Candy</h3>
+<%= form_for([@candy, @review], url: reviews_path(@candy.id)) do |f| %>
+<%= f.hidden_field :candy_id %>
+<%= f.label :review %>
+<%= f.text_field :review %>
+<%= f.submit "Submit" %>
+<% end %>
+
+<p>Ratings<p>
+<% @candy.reviews.each do |review| %>
+  <p><%= review.rating %></p>
+<% end %>

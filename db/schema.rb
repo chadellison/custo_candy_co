@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309191002) do
+ActiveRecord::Schema.define(version: 20160309225418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,10 +21,14 @@ ActiveRecord::Schema.define(version: 20160309191002) do
     t.string   "description"
     t.integer  "price"
     t.string   "image"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "category_id"
     t.string   "status"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "candy_orders", force: :cascade do |t|
@@ -49,7 +53,7 @@ ActiveRecord::Schema.define(version: 20160309191002) do
     t.string "nuts"
     t.string "fruits"
     t.string "spices"
-    t.string "name"
+    t.string "title"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -61,9 +65,11 @@ ActiveRecord::Schema.define(version: 20160309191002) do
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
-  create_table "ratings", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.string  "candy_id"
+    t.string  "review"
+    t.string  "name"
   end
 
   create_table "users", force: :cascade do |t|
