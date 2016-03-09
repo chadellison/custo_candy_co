@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   def new
     @candy = Candy.find(params[:candy_id])
-    @rating = @candy.reviews.new
+    @review = @candy.reviews.new
   end
 
   def create
