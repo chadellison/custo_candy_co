@@ -17,7 +17,7 @@ FactoryGirl.define do
   end
 
   sequence :status do
-    "In stock"
+    "In Stock"
   end
 
   factory :category do
