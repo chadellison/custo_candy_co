@@ -2,9 +2,15 @@ require "rails_helper"
 
 RSpec.feature "user can remove items from cart" do
   scenario "user sees updated cart" do
+    category = Category.create(name: "dinner delights")
+
     candy1 = create(:candy)
     candy2 = create(:candy)
     candy3 = create(:candy)
+
+    category.candies << candy1
+    category.candies << candy2
+    category.candies << candy3
 
     visit candies_path
 

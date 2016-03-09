@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show, :index]
 
-  resources :ratings, only: [:new, :create]
+  resources :reviews, only: [:new, :create]
 
   namespace :admin do
     resources :dashboard, only: [:show]

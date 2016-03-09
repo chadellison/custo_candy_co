@@ -7,6 +7,7 @@ RSpec.describe Candy, type: :model do
     it { should validate_presence_of(:description) }
     it { should validate_presence_of(:category_id) }
     it { should validate_presence_of(:status) }
+    it { should belong_to(:category) }
   end
   context "price format" do
     it "turns cents into dollars" do
@@ -15,9 +16,9 @@ RSpec.describe Candy, type: :model do
     end
   end
 
-  it "has many ratings" do
+  it "has many reviews" do
     candy = create(:candy)
-    Rating.create(rating: 3, candy_id: candy.id)
-    assert candy.ratings
+    Review.create(rating: 3, review: "tastey", candy_id: candy.id)
+    assert candy.reviews
   end
 end
