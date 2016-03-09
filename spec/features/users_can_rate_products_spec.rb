@@ -11,13 +11,13 @@ RSpec.feature "user can rate a product" do
 
     click_on "Rating:"
     expect(page).to have_content "Review this Candy"
+    fill_in "Name", with: "Jones"
     select "4", from: "Rating"
     fill_in "Review", with: "tastey!"
     click_on "Submit"
 
     expect(current_path).to eq candies_path
     expect(page).to have_content "Rating: 4.0 out of 5"
-
     click_on "Rating: 4.0 out of 5"
     select "3", from: "Rating"
     click_on "Submit"

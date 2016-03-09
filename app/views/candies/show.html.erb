@@ -8,6 +8,7 @@
 <p>Rating: <%= @candy.average_rating %></p>
 <h3>Reviews</h3>
 <% @candy.reviews.each do |review| %>
+<h5><%= review.name %></h5>
 <p>rated: <%= review.rating %></p>
 <p>review: <%= review.review %></p>
 <% end %>

@@ -5,8 +5,8 @@ RSpec.feature "user can see all reviews for a candy" do
     candy = create(:candy)
     category = Category.create(name: "Chocolates")
     category.candies << candy
-    Review.create(rating: "4", candy_id: candy.id, review: "tasty")
-    Review.create(rating: "5", candy_id: candy.id, review: "amazing!")
+    Review.create(name: "Bill", rating: "4", candy_id: candy.id, review: "tasty")
+    Review.create(name: "Rosco", rating: "5", candy_id: candy.id, review: "amazing!")
 
     visit candies_path
 
@@ -22,8 +22,10 @@ RSpec.feature "user can see all reviews for a candy" do
     expect(page).to have_content "Rating: 4.5 out of 5"
 
     expect(page).to have_content "Reviews"
+    expect(page).to have_content "Bill"
     expect(page).to have_content "rated: 4"
     expect(page).to have_content "review: tasty"
+    expect(page).to have_content "Rosco"
     expect(page).to have_content "rated: 5"
     expect(page).to have_content "review: amazing!"
 
