@@ -1,5 +1,5 @@
 <h3>Review this Candy</h3>
-<%= form_for([@candy, @rating], url: reviews_path(@candy.id)) do |f| %>
+<%= form_for([@candy, @review], url: reviews_path(@candy.id)) do |f| %>
 <%= f.hidden_field :candy_id %>
 <%= f.label :rating %>
 <%= f.select :rating, [['5', '5'],
