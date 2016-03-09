@@ -1,6 +1,0 @@
-<%= form_for(@custom_candy) do |f| %>
-<%= f.label :chocolate %>
-<%= f.select :category, [["Milk Chocolate", "Milk Chocolate"], ["Dark Chocolate", "Dark Chocolate"],["White Chocolate", "White Chocolate"]]  %>
-<%= f.select :fillings, [["Rum", "Rum"], ["Whiskey", "Whiskey"], ["Caramel", "Caramel"], ["Soylent", "Soylent"], ["Marzipan", "Marzipan"], ["Nougat", "Nougat"]] %>
-<%= f.submit "Create Candy", class: "btn btn-success red" %>
-<% end %>

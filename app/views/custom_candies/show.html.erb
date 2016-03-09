@@ -1,0 +1,33 @@
+<h1>Your Custom Candy</h1>
+<p>
+  <%= @custom_candy.name %>
+</p>
+<p>
+  Chocolate: <%= @custom_candy.category %>
+</p>
+<p>
+  <% unless @custom_candy.fillings == "" %>
+  Filling: <%= @custom_candy.fillings %>
+  <% end %>
+</p>
+<p>
+  <% if @custom_candy.nuts != "" %>
+  Nut: <%= @custom_candy.nuts %>
+  <% end %>
+</p>
+<p>
+  <% if @custom_candy.fruits != "" %>
+  Fruit: <%= @custom_candy.fruits %>
+  <% end %>
+</p>
+<p>
+  <% if @custom_candy.spices != "" %>
+  Spice: <%= @custom_candy.spices %>
+  <% end %>
+</p>
+<p>
+Custom Candy Price: <%= @custom_candy.to_dollars %>
+</p>
+<%= link_to "Create another Candy", new_custom_candy_path %>
+<%= link_to "Add to cart", carts_path(id: @custom_candy.id), method: :post %>
+

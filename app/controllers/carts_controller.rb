@@ -3,10 +3,15 @@ class CartsController < ApplicationController
   include CartsHelper
 
   def create
-    candy = Candy.find(params[:candy_id])
-    @cart.add_candy(candy.id)
-    session[:cart] = @cart.contents
-
+    byebug
+    if request.referrer.include?("custom_candies")
+      candy = CustomCandy.find(params[:id])
+      @cart.add_candy(candy.id, "custom")
+    else
+      candy = Candy.find(params[:candy_id])
+      @cart.add_candy(candy.id, "candy")
+      session[:cart] = @cart.contents
+    end
     flash[:info] = "Cart updated with #{path(candy)}"
     redirect_to :back
   end

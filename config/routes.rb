@@ -29,5 +29,5 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :show, :create]
   get "/order_success", to: "order_success#show"
 
-  resources :custom_candies, only: [:new, :create, :show]
+  resources :custom_candies, only: [:new, :create, :show, :index]
 end

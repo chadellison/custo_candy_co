@@ -1,0 +1,16 @@
+
+<%= form_for(@custom_candy) do |f| %>
+  <%= f.label :name, "Name your candy" %>
+  <%= f.text_field :name %>
+  <%= f.label :category %>
+  <%= f.select :category, [["Milk Chocolate", "Milk Chocolate"], ["Dark Chocolate", "Dark Chocolate"],["White Chocolate", "White Chocolate"]], prompt: "categories ..." %>
+  <%= f.label :fillings %>
+  <%= f.select :fillings, [["Rum", "Rum"], ["Whiskey", "Whiskey"], ["Caramel", "Caramel"], ["Soylent", "Soylent"], ["Marzipan", "Marzipan"], ["Nougat", "Nougat"]], prompt: "Fillings ..." %>
+  <%= f.label :nuts %>
+  <%= f.select :nuts, [["Almonds", "Almonds"], ["Walnuts", "Walnuts"], ["Cashews", "Cashews"], ["Hazelnuts", "Hazelnuts"], ["Pistachios", "Pistachios"], ["Peanuts", "Peanuts"]], prompt: "Nuts ..." %>
+  <%= f.label :fruits %>
+  <%= f.select :fruits, [["Cherries", "Cherries"], ["Apricots", "Apricots"], ["Blueberries", "Blueberries"], ["Pineapple", "Pineapple"], ["Raisins", "Raisins"], ["Orange", "Orange"], ["Ginger", "Ginger"]], prompt: "Fruits ..." %>
+  <%= f.label :spices %>
+  <%= f.select :spices, [["Sea Salt", "Sea Salt"], ["Cayenne", "Cayenne"], ["Curry", "Curry"], ["Chile", "Chile"], ["Cinnamon", "Cinnamon"], ["Basil", "Basil"], ["Peppermint", "Peppermint"]], prompt: "Spices ..." %>
+  <%= f.submit "Create Candy", class: "btn btn-success red" %>
+<% end %>

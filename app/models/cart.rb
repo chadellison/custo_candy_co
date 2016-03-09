@@ -3,12 +3,12 @@ class Cart
   attr_reader :contents
 
   def initialize(initial_contents = nil)
-    @contents = initial_contents || {}
+    @contents = initial_contents || {"candy" => {}, "custom" => {}}
   end
 
-  def add_candy(candy_id)
-    contents[candy_id.to_s] ||= 0
-    contents[candy_id.to_s] += 1
+  def add_candy(candy_id, kind_of_candy)
+    contents[kind_of_candy][candy_id.to_s] ||= 0
+    contents[kind_of_candy][candy_id.to_s] += 1
   end
 
   def total
