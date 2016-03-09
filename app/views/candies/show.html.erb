@@ -1,8 +1,16 @@
 <%= render partial: 'partials/flash' %>
 <img src="<%= @candy.image %>" />
 <h5><%= @candy.title %> </h5>
-<p> <%= @candy.description %> </p>
-<p><%= @candy.to_dollars %></p>
+<p>Description: <%= @candy.description %> </p>
+<p>Price: <%= @candy.to_dollars %></p>
+<p>Status: <%= @candy.status %></p>
+<p>Category: <%= @candy.category.name %></p>
+<p>Rating: <%= @candy.average_rating %></p>
+<h3>Reviews</h3>
+<% @candy.reviews.each do |review| %>
+<p>rated: <%= review.rating %></p>
+<p>review: <%= review.review %></p>
+<% end %>
 <% if @candy.retired? %>
   <%= flash[:notice] = "Item no longer available" %>
 <% elsif @candy.out_of_stock? %>
@@ -10,3 +18,4 @@
 <% else %>
   <div id="<%= @candy.id %>" class="center-align"><%= button_to "Add to Cart", carts_path(candy_id: @candy.id), class: "btn btn-success red" %></div>
 <% end %>
+<p><%= link_to "Review this Candy", new_review_path(candy_id: @candy.id) %></p>
