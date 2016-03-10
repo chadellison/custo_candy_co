@@ -9,8 +9,8 @@ class CartsController < ApplicationController
     else
       candy = Candy.find(params[:candy_id])
       @cart.add_candy(candy.id, "candy")
-      session[:cart] = @cart.contents
     end
+    session[:cart] = @cart.contents
     flash[:info] = "Cart updated with #{path(candy)}"
     redirect_to :back
   end

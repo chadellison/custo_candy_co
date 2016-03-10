@@ -27,8 +27,18 @@ RSpec.feature "visitor can create custom candy" do
     expect(page).to have_content "Spice: Cayenne"
     expect(page).to have_content "Custom Candy Price: $8.00"
 
-    click_on "Add to cart"
-    click_on "Create another Candy"
+    click_on "Add to Cart"
+
+    within("#header-bar") do
+      click_on "View Cart"
+    end
+    expect(page).to have_content "Dank Goodness"
+    expect(page).to have_content "Delicious Milk Chocolate Whiskey Almonds Cherries Cayenne"
+    expect(page).to have_content "$8.00"
+
+    within("#header-bar") do
+      click_on "Create your Candy"
+    end
 
     fill_in "Name your candy", with: "Yum yo"
     select "Milk Chocolate", from: "Category"
@@ -44,21 +54,18 @@ RSpec.feature "visitor can create custom candy" do
     expect(page).to have_content "Nut: Almonds"
     expect(page).to have_content "Custom Candy Price: $6.00"
 
-    click_on "Add to cart"
-    click_on "View Cart"
+    click_on "Add to Cart"
+
+    within("#header-bar") do
+      click_on "View Cart"
+    end
 
     expect(page).to have_content "Dank Goodness"
-    expect(page).to have_content "Milk Chocolate"
-    expect(page).to have_content "Whiskey"
-    expect(page).to have_content "Almonds"
-    expect(page).to have_content "Cherries"
-    expect(page).to have_content "Cayenne"
+    expect(page).to have_content "Delicious Milk Chocolate Whiskey Almonds Cherries Cayenne"
     expect(page).to have_content "$8.00"
 
     expect(page).to have_content "Yum yo"
-    expect(page).to have_content "Milk Chocolate"
-    expect(page).to have_content "Whiskey"
-    expect(page).to have_content "Almonds"
+    expect(page).to have_content "Delicious Milk Chocolate Whiskey Almonds"
     expect(page).to have_content "$6.00"
   end
 end

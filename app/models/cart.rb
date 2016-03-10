@@ -1,3 +1,4 @@
+
 class Cart
   include ActionView::Helpers::NumberHelper
   attr_reader :contents
@@ -17,7 +18,7 @@ class Cart
     else
       candy = 0
     end
-    
+
     if contents["custom"]
       custom = contents["custom"].values.sum
     else
@@ -28,11 +29,28 @@ class Cart
   end
 
   def total_cost
-    total_amount = contents["candy"].map do |id, quantity|
+    if contents["candy"] && contents["custom"]
+      total = tally_candy_price + tally_custom_price
+    elsif contents["candy"]
+      total = tally_candy_price
+    else
+      total = tally_custom_price
+    end
+    number_to_currency(total)
+  end
+
+  def tally_candy_price
+    contents["candy"].map do |id, quantity|
       candy = Candy.find(id.to_i)
       candy.currency * quantity
     end.sum
-    number_to_currency(total_amount)
+  end
+
+  def tally_custom_price
+    contents["custom"].map do |id, quantity|
+      candy = CustomCandy.find(id.to_i)
+      candy.total_price * quantity
+    end.sum
   end
 
   def remove_candy(candy)
