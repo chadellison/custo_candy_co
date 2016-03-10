@@ -13,68 +13,59 @@ class Cart
   end
 
   def total
-    if contents["candy"]
-      candy = contents["candy"].values.sum
-    else
-      candy = 0
-    end
+    contents["candy"] ? candy = contents["candy"].values.sum : candy = 0
+    contents["custom"] ? custom = contents["custom"].values.sum : custom = 0
 
-    if contents["custom"]
-      custom = contents["custom"].values.sum
-    else
-      custom = 0
-    end
     candy + custom
-    # contents["candy"].values.sum + contents["custom"].values.sum if contents["custom"]
   end
 
   def total_cost
     if contents["candy"] && contents["custom"]
-      total = tally_candy_price + tally_custom_price
-    elsif contents["candy"]
-      total = tally_candy_price
+      total = tally_price(contents["candy"]) + tally_price(contents["custom"])
     else
-      total = tally_custom_price
+      candy_type = contents["candy"] || contents["custom"]
+      total = tally_price(candy_type)
     end
     number_to_currency(total)
   end
 
-  def tally_candy_price
-    contents["candy"].map do |id, quantity|
-      candy = Candy.find(id.to_i)
+  def tally_price(candy_type)
+    candy_type.map do |id, quantity|
+      candy = find_candy(candy_type, id)
       candy.currency * quantity
     end.sum
   end
 
-  def tally_custom_price
-    contents["custom"].map do |id, quantity|
-      candy = CustomCandy.find(id.to_i)
-      candy.total_price * quantity
-    end.sum
+  def find_candy(candy_type, id)
+    if candy_type == contents["candy"]
+      Candy.find(id)
+    else
+      CustomCandy.find(id)
+    end
   end
 
   def remove_candy(candy)
-    contents["candy"].delete(candy.id.to_s)
-  end
-
-  def remove_custom_candy(candy)
-    contents["custom"].delete(candy.id.to_s)
-  end
-
-  def adjust_quantity(operator, candy_id)
-    if operator == "-"
-      contents["candy"][candy_id.to_s] -= 1 unless contents["candy"][candy_id] == 1
+    if candy.class == Candy
+      contents["candy"].delete(candy.id.to_s)
     else
-      contents["candy"][candy_id.to_s] += 1
+      contents["custom"].delete(candy.id.to_s)
     end
   end
 
-  def adjust_custom_quantity(operator, candy_id)
-    if operator == "-"
-      contents["custom"][candy_id.to_s] -= 1 unless contents["custom"][candy_id] == 1
+  def find_candy_type(candy)
+    if candy.class == Candy
+      contents["candy"]
     else
-      contents["custom"][candy_id.to_s] += 1
+      contents["custom"]
     end
   end
 
+  def adjust_quantity(operator, candy)
+    candy_type = find_candy_type(candy)
+    if operator == "-"
+      candy_type[candy.id.to_s] -= 1 unless candy_type[candy.id] == 1
+    else
+      candy_type[candy.id.to_s] += 1
+    end
+  end
 end

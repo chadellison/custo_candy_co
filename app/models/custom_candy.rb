@@ -1,6 +1,6 @@
 class CustomCandy < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
-  def total_price
+  def currency
     count = [nuts, fillings, spices, fruits].count do |addon|
       !addon.nil? && addon != ""
     end
@@ -8,7 +8,7 @@ class CustomCandy < ActiveRecord::Base
   end
 
   def to_dollars
-    number_to_currency(total_price)
+    number_to_currency(currency)
   end
 
   def describe
