@@ -5,10 +5,30 @@ class OrderProcessor
   end
 
   def prepare_order
+    if @cart.contents["custom"] && @cart.contents["candy"]
+      prepare_custom_order
+      prepare_candy_order
+    elsif @cart.contents["custom"]
+      prepare_custom_order
+    else
+      candy = prepare_candy_order
+      update_candy_order(candy.keys.first, candy.values.first)
+    end
+  end
+
+  def prepare_candy_order
     @cart.contents["candy"].each do |id, quantity|
       candy = Candy.find(id)
       @order.candies << candy
       update_candy_order(id, quantity)
+    end
+  end
+
+  def prepare_custom_order
+    @cart.contents["custom"].each do |id, quantity|
+      custom = CustomCandy.find(id)
+      custom.update(quantity: quantity)
+      @order.custom_candies << custom
     end
   end
 

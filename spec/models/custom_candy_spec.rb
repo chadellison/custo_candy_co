@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe CustomCandy, type: :model do
   describe CustomCandy do
+    it { should belong_to(:order) }
     it "counts elements and turn to dollars" do
       custom_candy1 = CustomCandy.new(title: "yo", category: "chocloate",
                                       fillings: "whiskey", spices: "cayenne",
