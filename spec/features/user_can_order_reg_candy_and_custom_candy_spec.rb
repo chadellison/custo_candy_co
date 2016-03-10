@@ -40,7 +40,7 @@ RSpec.feature "user_can_order_regular_candy_with_custom_candy" do
     within("#header-bar") do
       click_on "View Cart"
     end
-    total = candy.currency + CustomCandy.last.total_price
+    total = candy.currency + CustomCandy.last.currency
     expect(page).to have_content "Hoss Candy"
     description = "Delicious Milk Chocolate Whiskey Almonds Cherries Cayenne"
     expect(page).to have_content description
