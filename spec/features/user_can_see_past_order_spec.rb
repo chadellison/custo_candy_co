@@ -69,7 +69,7 @@ RSpec.feature "User can see past order" do
     expect(page).to have_content price2.to_s
     expect(page).to have_content candy2.status.to_s
     expect(page).to have_content "Total order price: #{number_to_currency(price/100.0)}"
-    expect(page).to have_content "Ordered at: #{order.format_date}"
+    expect(page).to have_content "Ordered on: #{order.format_date}"
 
     click_on candy2.title.to_s
 

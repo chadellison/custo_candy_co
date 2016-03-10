@@ -17,7 +17,6 @@ class Candy < ActiveRecord::Base
   # before_save :set_image
 
   def set_image
-    byebug
     if image.nil? || image.empty?
       self.image = "http://www.travelandleisure.com/sites/default/files/styles/1600x1000/public/americancandy1015.jpg"
     end

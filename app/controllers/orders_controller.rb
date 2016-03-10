@@ -14,15 +14,17 @@ class OrdersController < ApplicationController
   def create
     if current_user
       @order = current_user.orders.create(status: "pending")
+      cart_params = {}
       if params[:contents]["candy"] && params[:contents]["custom"]
-        cart_params = {}
         cart_params["candy"] = params[:contents]["candy"]
         cart_params["custom"] = params[:contents]["custom"]
         @cart = Cart.new(cart_params)
       elsif params[:contents]["candy"]
-        @cart = Cart.new(params[:contents]["candy"])
+        cart_params["candy"] = params[:contents]["candy"]
+        @cart = Cart.new(cart_params)
       else
-        @cart = Cart.new(params[:contents]["custom"])
+        cart_params["custom"] = params[:contents]["custom"]
+        @cart = Cart.new(cart_params)
       end
       OrderProcessor.new(@order, @cart).prepare_order
       session[:cart] = {}
