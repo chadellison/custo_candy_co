@@ -4,6 +4,7 @@ class Candy < ActiveRecord::Base
   has_many :candy_orders
   has_many :orders, through: :candy_orders
   has_many :reviews
+
   belongs_to :category
   has_attached_file :image, :path => ":rails_root/public/system/:attachment/:id/:style/:filename", :url => "/system/:attachment/:id/:style/:filename", styles: { favicon: '16x16>', square: '200x200#', medium: '300x300>' }
 

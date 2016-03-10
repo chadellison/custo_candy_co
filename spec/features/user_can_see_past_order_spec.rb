@@ -17,10 +17,12 @@ RSpec.feature "User can see past order" do
     cart = Cart.new
     order = Order.create
 
-    [candy1, candy1, candy2, candy2].each { |candy| cart.add_candy(candy.id) }
+    [candy1, candy1, candy2, candy2].each do |candy|
+      cart.add_candy(candy.id, "candy")
+    end
 
-    candy1_quantity = cart.contents[candy1.id.to_s]
-    candy2_quantity = cart.contents[candy2.id.to_s]
+    candy1_quantity = cart.contents["candy"][candy1.id.to_s]
+    candy2_quantity = cart.contents["candy"][candy2.id.to_s]
 
     candy1_price = (candy1.price * candy1_quantity)
     candy2_price = (candy2.price * candy2_quantity)

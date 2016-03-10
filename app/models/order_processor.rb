@@ -5,7 +5,7 @@ class OrderProcessor
   end
 
   def prepare_order
-    @cart.contents.each do |id, quantity|
+    @cart.contents["candy"].each do |id, quantity|
       candy = Candy.find(id)
       @order.candies << candy
       update_candy_order(id, quantity)

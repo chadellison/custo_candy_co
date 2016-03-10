@@ -1,7 +1,7 @@
 <%= render partial: 'partials/flash' %>
 
 <div>
-  <% unless @cart.contents.empty? %>
+  <% unless @cart.contents["candy"].empty? && @cart.contents["custom"].empty? %>
 
   <table class="highlight">
     <thead>
@@ -16,7 +16,7 @@
      </tr>
     </thead>
     <tbody>
-    <% @cart.contents.each do |id, quantity| %>
+    <% @cart.contents["candy"].each do |id, quantity| %>
       <% candy = Candy.find(id) %>
       <tr>
         <td><div id="<%= candy.id %>"><a class="waves-effect waves-light btn red"><%= button_to "Remove", cart_path(candy_id: candy.id), method: "delete" %></a></div></td>
@@ -27,7 +27,20 @@
         <td><a class="btn-floating btn-small waves-effect waves-light red center-align"><%= button_to "+", cart_path(candy_id: candy.id, operator: "+"), method: :put %></a></td>
         <td><a class="btn-floating btn-small waves-effect waves-light red center-align"><%= button_to "-", cart_path(candy_id: candy.id, operator: "-"), method: :put unless quantity == 1 %></a></td>
       </tr>
-    <% end %>
+    <% end if @cart.contents["candy"]%>
+
+    <% @cart.contents["custom"].each do |id, quantity| %>
+      <% candy = CustomCandy.find(id) %>
+      <tr>
+        <td><div id="<%= candy.id %>"><a class="waves-effect waves-light btn red"><%= button_to "Remove", cart_path(custom_id: candy.id), method: "delete" %></a></div></td>
+        <td><%= candy.title %></td>
+        <td><%= candy.describe %></td>
+        <td><%= candy.to_dollars %></td>
+        <td><%= quantity %></td>
+        <td><a class="btn-floating btn-small waves-effect waves-light red center-align"><%= button_to "+", cart_path(custom_id: candy.id, operator: "+"), method: :put %></a></td>
+        <td><a class="btn-floating btn-small waves-effect waves-light red center-align"><%= button_to "-", cart_path(custom_id: candy.id, operator: "-"), method: :put unless quantity == 1 %></a></td>
+      </tr>
+    <% end if @cart.contents["custom"]%>
     </tbody>
     </table>
     <h4>Total Price: <%= @cart.total_cost %></h4>

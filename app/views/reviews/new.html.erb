@@ -14,3 +14,8 @@
 <%= f.text_field :review %>
 <%= f.submit "Submit", class: "btn btn-success red" %>
 <% end %>
+
+<p>Ratings<p>
+<% @candy.reviews.each do |review| %>
+  <p><%= review.rating %></p>
+<% end %>
