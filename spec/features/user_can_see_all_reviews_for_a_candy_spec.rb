@@ -23,11 +23,11 @@ RSpec.feature "user can see all reviews for a candy" do
 
     expect(page).to have_content "Reviews"
     expect(page).to have_content "Bill"
-    expect(page).to have_content "rated: 4"
-    expect(page).to have_content "review: tasty"
+    expect(page).to have_content "4"
+    expect(page).to have_content "tasty"
     expect(page).to have_content "Rosco"
-    expect(page).to have_content "rated: 5"
-    expect(page).to have_content "review: amazing!"
+    expect(page).to have_content "5"
+    expect(page).to have_content "amazing!"
 
     click_on "Review this Candy"
     expect(new_review_path).to eq current_path

@@ -1,4 +1,4 @@
 <h1><%= "Admin Dashboard" %></h1>
-<%= "Welcome #{current_user.name}" %>
-<%= link_to "View All Candies", admin_candies_path %>
-<%= link_to "Create Candy", new_admin_candy_path %>
+<h2><%= "Welcome #{current_user.name}" %></h2>
+<h3>Do you want to <%= link_to "View All Candies", admin_candies_path %>?</h3>
+<h3>Or do you want to <%= link_to "Create Candy", new_admin_candy_path %>?</h3>

@@ -58,14 +58,14 @@ RSpec.feature "User can see past order" do
     price = candy_order1.sub_total + candy_order2.sub_total
 
     expect(page).to have_content "Status: #{order.status}"
-    expect(page).to have_content "Item: #{candy1.title},
-                                  Quantity: #{candy1_quantity},
-                                  Subtotal: #{price1},
-                                  Status: #{candy1.status}"
-    expect(page).to have_content "Item: #{candy2.title},
-                                  Quantity: #{candy2_quantity},
-                                  Subtotal: #{price2},
-                                  Status: #{candy2.status}"
+    expect(page).to have_content "#{candy1.title}"
+    expect(page).to have_content "#{candy1_quantity}"
+    expect(page).to have_content "#{price1}"
+    expect(page).to have_content "#{candy1.status}"
+    expect(page).to have_content "#{candy2.title}"
+    expect(page).to have_content "#{candy2_quantity}"
+    expect(page).to have_content "#{price2}"
+    expect(page).to have_content "#{candy2.status}"
     expect(page).to have_content "Total order price: #{number_to_currency(price/100.0)}"
     expect(page).to have_content "Ordered at: #{order.format_date}"
 
