@@ -18,7 +18,15 @@
           <td><%= candy_order.candy_status %></td>
         </tr>
       <% end %>
+      <% @order.custom_candies.each do |custom_candy| %>
+        <tr>
+          <td><%= link_to "#{custom_candy.title}", custom_candy_path(custom_candy.id)  %></td>
+          <td><%= "#{custom_candy.quantity}" %></td>
+          <td><%= "#{custom_candy.to_dollars}" %></td>
+          <td></td>
+        </tr>
+        <% end %>
     </tbody>
   </table>
   <h3>Total order price: <%= @order.total_to_dollars %></h3>
-  <h3>Ordered at: <%= @order.format_date %></h3>
+  <h3>Ordered on: <%= @order.format_date %></h3>

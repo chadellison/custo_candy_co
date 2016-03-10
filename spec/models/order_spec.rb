@@ -4,6 +4,7 @@ RSpec.describe Order, type: :model do
   context "can have many candies" do
     it { should have_many(:candy_orders) }
     it { should have_many(:candies) }
+    it { should have_many(:custom_candies) }
     it { should belong_to(:user) }
   end
 

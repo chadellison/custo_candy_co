@@ -1,4 +1,6 @@
 class CustomCandy < ActiveRecord::Base
+  belongs_to :order
+  
   include ActionView::Helpers::NumberHelper
   def currency
     count = [nuts, fillings, spices, fruits].count do |addon|
