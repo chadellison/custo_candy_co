@@ -57,11 +57,24 @@ class Cart
     contents["candy"].delete(candy.id.to_s)
   end
 
+  def remove_custom_candy(candy)
+    contents["custom"].delete(candy.id.to_s)
+  end
+
   def adjust_quantity(operator, candy_id)
     if operator == "-"
-      contents["candy"][candy_id.to_s] -= 1 unless contents[candy_id] == 1
+      contents["candy"][candy_id.to_s] -= 1 unless contents["candy"][candy_id] == 1
     else
       contents["candy"][candy_id.to_s] += 1
     end
   end
+
+  def adjust_custom_quantity(operator, candy_id)
+    if operator == "-"
+      contents["custom"][candy_id.to_s] -= 1 unless contents["custom"][candy_id] == 1
+    else
+      contents["custom"][candy_id.to_s] += 1
+    end
+  end
+
 end

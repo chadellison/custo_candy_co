@@ -10,11 +10,7 @@ class CustomCandy < ActiveRecord::Base
   def to_dollars
     number_to_currency(total_price)
   end
-
-  # def currency
-  #   total_price * 100
-  # end
-
+  
   def describe
     "Delicious #{category} #{fillings} #{nuts} #{fruits} #{spices}"
   end

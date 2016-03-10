@@ -14,12 +14,5 @@ RSpec.describe CustomCandy, type: :model do
     expect("$8.00").to eq result1
     expect("$6.00").to eq result2
     end
-
-    # it "has a currency method" do
-    #   custom_candy = CustomCandy.new(title: "this candy",
-    #                                 fruits: "Orange",
-    #                                 nuts: "Almonds")
-    #   expect(custom_candy.currency).to eq 600
-    # end
   end
 end
