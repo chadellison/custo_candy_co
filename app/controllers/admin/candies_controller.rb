@@ -12,7 +12,7 @@ class Admin::CandiesController < Admin::AuthorizationController
   end
 
   def create
-    @candy = Candy.create(candy_params)
+    @candy = Candy.new(candy_params)
     if @candy.save
       flash[:success] = "#{@candy.title} created!"
       redirect_to admin_candies_path

@@ -16,7 +16,6 @@ RSpec.feature "admin can edit candies" do
     click_on "View All Candies"
 
     expect(current_path).to eq admin_candies_path
-    expect(page).to have_css("img[src*='https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHDOSNxmatCFt8kQLujghKqW3dlmgvBhMrqBd747RP95UQTuDzRF7838s']")
     expect(page).to have_content candy1.description
     expect(page).to have_content candy1.to_dollars
     expect(page).to have_content candy1.status
@@ -32,13 +31,12 @@ RSpec.feature "admin can edit candies" do
     fill_in "Description", with: "It is juicy"
     fill_in "Price", with: "1000"
     select "Out of Stock", from: "Status"
-    fill_in "Image", with: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR7PwjqnGRs8WnjryyEr8MZuI1YK7X_qfPLy6tMrdxnEHtmivVbzQ"
+    attach_file "Image", "spec/asset_specs/images/upside-down-rachel.jpg"
     click_on "Update Candy"
 
     expect(page).to have_content "chocolate bar"
     expect(page).to have_content "It is juicy"
     expect(page).to have_content "$10.00"
     expect(page).to have_content "Out of Stock"
-    expect(page).to have_css "img[src*='https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR7PwjqnGRs8WnjryyEr8MZuI1YK7X_qfPLy6tMrdxnEHtmivVbzQ']"
   end
 end

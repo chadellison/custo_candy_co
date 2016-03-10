@@ -1,4 +1,5 @@
 <%= render partial: 'partials/flash' %>
+
 <img src="<%= @candy.image %>" />
 <h5><%= @candy.title %> </h5>
 <p>Description: <%= @candy.description %> </p>
@@ -6,17 +7,31 @@
 <p>Status: <%= @candy.status %></p>
 <p>Category: <%= @candy.category.name %></p>
 <p>Rating: <%= @candy.average_rating %></p>
-<h3>Reviews</h3>
-<% @candy.reviews.each do |review| %>
-<h5><%= review.name %></h5>
-<p>rated: <%= review.rating %></p>
-<p>review: <%= review.review %></p>
-<% end %>
 <% if @candy.retired? %>
-  <%= flash[:notice] = "Item no longer available" %>
+  <div class="center-align">Item no longer available</div>
 <% elsif @candy.out_of_stock? %>
-  <%= flash[:notice] = "No longer available" %>
+  <div class="center-align">Not in Stock</div>
 <% else %>
   <div id="<%= @candy.id %>" class="center-align"><%= button_to "Add to Cart", carts_path(candy_id: @candy.id), class: "btn btn-success red" %></div>
 <% end %>
-<p><%= link_to "Review this Candy", new_review_path(candy_id: @candy.id) %></p>
+
+<h3>Reviews</h3>
+<table class="highlight">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Rating</th>
+      <th>Review</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @candy.reviews.each do |review| %>
+      <tr>
+        <td><%= review.name %></td>
+        <td><%= review.rating %></td>
+        <td><%= review.review %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<h5><%= link_to "Review this Candy", new_review_path(candy_id: @candy.id) %></h5>
