@@ -1,7 +1,24 @@
 <h2>Order Status: <%= @order.status %></h2>
-  <% @candy_orders.each do |candy_order| %>
-    <p>Item: <%= link_to  "#{candy_order.candy_title}", candy_path(candy_order.candy_id) %>, Quantity: <%= candy_order.quantity %>, Subtotal: <%= candy_order.to_dollars %>, Status: <%= candy_order.candy_status %></p>
-  <% end %>
 
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+        <th>Current Candy Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @candy_orders.each do |candy_order| %>
+        <tr>
+          <td><%= link_to  "#{candy_order.candy_title}", candy_path(candy_order.candy_id) %></td>
+          <td><%= candy_order.quantity %></td>
+          <td><%= candy_order.to_dollars %></td>
+          <td><%= candy_order.candy_status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
   <h3>Total order price: <%= @order.total_to_dollars %></h3>
   <h3>Ordered at: <%= @order.format_date %></h3>

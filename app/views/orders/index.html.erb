@@ -1,3 +1,14 @@
-<% @orders.each do |order| %>
-  <h4><%= link_to "Order #{order.id} #{order.format_date}", order_path(order) %></h4>
-<% end %>
+<table class="highlight">
+  <thead>
+    <tr>
+      <th><strong>Order History</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to "Order #{order.id} #{order.format_date}", order_path(order) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

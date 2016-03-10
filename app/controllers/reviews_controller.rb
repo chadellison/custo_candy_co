@@ -9,7 +9,13 @@ class ReviewsController < ApplicationController
     redirect_to candies_path
   end
 
+private
+
   def review_params
     params.require(:review).permit(:name, :rating, :review, :candy_id)
+  end
+
+  def get_candy_id
+    params[:review][:candy_id]
   end
 end
