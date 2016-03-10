@@ -17,7 +17,9 @@ RSpec.feature "User can see past order" do
     cart = Cart.new
     order = Order.create
 
-    [candy1, candy1, candy2, candy2].each { |candy| cart.add_candy(candy.id, "candy") }
+    [candy1, candy1, candy2, candy2].each do |candy|
+      cart.add_candy(candy.id, "candy")
+    end
 
     candy1_quantity = cart.contents["candy"][candy1.id.to_s]
     candy2_quantity = cart.contents["candy"][candy2.id.to_s]
@@ -66,7 +68,8 @@ RSpec.feature "User can see past order" do
                                   Quantity: #{candy2_quantity},
                                   Subtotal: #{price2},
                                   Status: #{candy2.status}"
-    expect(page).to have_content "Total order price: #{number_to_currency(price/100.0)}"
+    total = number_to_currency(price / 100.0)
+    expect(page).to have_content "Total order price: " + total
     expect(page).to have_content "Ordered at: #{order.format_date}"
 
     click_on "#{candy2.title}"

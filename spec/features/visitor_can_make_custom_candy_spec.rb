@@ -33,7 +33,8 @@ RSpec.feature "visitor can create custom candy" do
       click_on "View Cart"
     end
     expect(page).to have_content "Dank Goodness"
-    expect(page).to have_content "Delicious Milk Chocolate Whiskey Almonds Cherries Cayenne"
+    description = "Delicious Milk Chocolate Whiskey Almonds Cherries Cayenne"
+    expect(page).to have_content description
     expect(page).to have_content "$8.00"
 
     within("#header-bar") do
@@ -60,8 +61,10 @@ RSpec.feature "visitor can create custom candy" do
       click_on "View Cart"
     end
 
+    description = "Delicious Milk Chocolate Whiskey Almonds Cherries Cayenne"
+
     expect(page).to have_content "Dank Goodness"
-    expect(page).to have_content "Delicious Milk Chocolate Whiskey Almonds Cherries Cayenne"
+    expect(page).to have_content description
     expect(page).to have_content "$8.00"
 
     expect(page).to have_content "Yum yo"
