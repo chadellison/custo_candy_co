@@ -6,11 +6,11 @@
   <%= f.text_field :description %>
   <%= f.label :price %>
   <%= f.text_field :price %>
-  <%= f.label :image %>
-  <%= f.file_field :image %><br>
   <%= f.label :status %>
-  <%= f.select :status, [['In Stock', 'In Stock'], ['Out of Stock', 'Out of Stock'], ['Discontinued', 'Discontinued']] %>
+  <%= f.select :status, [['In Stock', 'In Stock'], ['Out of Stock', 'Out of Stock'], ['Discontinued', 'Discontinued']] %><br>
   <%= f.label :category_id %>
-  <%= f.collection_select :category_id, Category.all, :id, :name %>
+  <%= f.collection_select :category_id, Category.all, :id, :name %><br>
+  <%= f.label :image %><br>
+  <%= f.file_field :image %><br><br>
   <%= f.submit "Create Candy", class: "btn btn-success red"%>
 <% end %>
