@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
         @cart = Cart.new(cart_params)
       end
       OrderProcessor.new(@order, @cart).prepare_order
-      session[:cart] = {}
+      session[:cart] = {"candy" => {}, "custom" => {}}
       redirect_to order_success_path
     else
       flash[:notice] = "You must login or register for an account before checking out"
