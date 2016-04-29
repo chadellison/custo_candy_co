@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  resources :candies, only: [:index, :show]
+  # resources :candies, only: [:index, :show]
 
   resources :categories, only: [:show, :index]
 
@@ -11,6 +11,12 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:show]
     resources :candies, only: [:index, :show, :new, :create, :edit, :update]
   end
+
+  get "/candies", to: "candies#index"
+  get "/candies/:id", to: "candies#show"
+
+  # get "/categories", to: "categories#index"
+  # get "/categories/id", to: "categories#show"
 
   get "/register", to: "users#new"
 

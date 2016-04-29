@@ -12,7 +12,7 @@ RSpec.feature "user can see all reviews for a candy" do
 
     click_on "More Info"
 
-    expect(candy_path(candy.id)).to eq current_path
+    expect("/candies/#{candy.id}").to eq current_path
     expect(page).to have_content candy.title
     expect(page).to have_css("img[src*='#{candy.image}']")
     expect(page).to have_content "Description: #{candy.description}"

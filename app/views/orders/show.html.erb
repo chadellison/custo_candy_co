@@ -12,7 +12,7 @@
     <tbody>
       <% @candy_orders.each do |candy_order| %>
         <tr>
-          <td><%= link_to  "#{candy_order.candy_title}", candy_path(candy_order.candy_id) %></td>
+          <td><%= link_to  "#{candy_order.candy_title}", "/candies/#{candy_order.candy_id}" %></td>
           <td><%= candy_order.quantity %></td>
           <td><%= candy_order.to_dollars %></td>
           <td><%= candy_order.candy_status %></td>
