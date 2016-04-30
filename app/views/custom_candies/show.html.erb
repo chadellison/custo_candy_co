@@ -28,5 +28,5 @@
 <p>
 Custom Candy Price: <%= @custom_candy.to_dollars %>
 </p>
-<%= button_to "Create another Candy", new_custom_candy_path, class: "btn btn-success red" %><br>
+<%= button_to "Create another Candy", "/custome_candies/new", class: "btn btn-success red" %><br>
 <%= button_to "Add to Cart", carts_path(id: @custom_candy.id), method: :post, class: "btn btn-success red" %>

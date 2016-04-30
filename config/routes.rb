@@ -39,8 +39,6 @@ Rails.application.routes.draw do
 
   get "/order_success",             to: "order_success#show"
 
-  resources :custom_candies, only: [:new, :create, :show, :index, :update]
-
   get "/custom_candies",            to: "custom_candies#index"
   get "/custom_candies/new",        to: "custom_candies#new"
   get "/custom_candies/:id",        to: "custom_candies#show"

@@ -5,7 +5,7 @@ class CustomCandiesController < ApplicationController
 
   def create
     @custom_candy = CustomCandy.create(custom_candy_params)
-    redirect_to custom_candy_path(@custom_candy)
+    redirect_to "/custom_candies/#{@custom_candy.id}"
   end
 
   def show
