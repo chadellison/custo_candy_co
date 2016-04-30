@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def show
     if current_user.admin?
-      redirect_to admin_dashboard_path(current_user.id)
+      redirect_to "/admin/dashboard/#{current_user.id}"
     else
       @user = current_user
     end

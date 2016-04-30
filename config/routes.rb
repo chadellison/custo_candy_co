@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :admin do
-    resources :dashboard, only: [:show]
+    # resources :dashboard, only: [:show]
     resources :candies, only: [:index, :show, :new, :create, :edit, :update]
   end
 
-  # get "/admin/dashboard/:id", to: "admindashboard#show"
+  get "/admin/dashboard/:id", to: "admin/dashboard#show"
 
   get "/candies", to: "candies#index"
   get "/candies/:id", to: "candies#show"
