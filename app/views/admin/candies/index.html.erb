@@ -13,7 +13,7 @@
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4"><%= candy.to_dollars %><i class="material-icons right">close</i></span>
         <p><%= candy.description %></p>
-        <p><%= link_to "Rating: #{candy.average_rating}", new_review_path(candy_id: candy.id) %></p>
+        <p><%= link_to "Rating: #{candy.average_rating}", reviews_path(candy_id: candy.id) %></p>
       </div>
     </div>
     <div id="<%= candy.id %>" class="center-align"><%= candy.status %><br><%= link_to "#{candy.title}", admin_candy_path(candy.id) %><br><%= button_to "Edit", edit_admin_candy_path(candy.id), method: :get, class: "btn btn-success red" %></div>

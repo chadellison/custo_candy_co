@@ -30,6 +30,6 @@ RSpec.feature "user can see all reviews for a candy" do
     expect(page).to have_content "amazing!"
 
     click_on "Review this Candy"
-    expect(new_review_path).to eq current_path
+    expect("/reviews").to eq current_path
   end
 end

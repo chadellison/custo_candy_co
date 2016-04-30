@@ -28,7 +28,7 @@ RSpec.feature "Admin sees admin dashboard" do
     fill_in "Password", with: "password"
     click_on "Sign in"
 
-    visit admin_dashboard_path(user.id)
+    visit "/admin/dashboard/#{user.id}"
 
     expect(page).to have_content "The page you were looking for doesn't exist."
 
