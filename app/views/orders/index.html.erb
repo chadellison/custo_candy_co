@@ -7,7 +7,7 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to "Order #{order.id} #{order.format_date}", order_path(order) %></td>
+        <td><%= link_to "Order #{order.id} #{order.format_date}", "/orders/#{order.id}" %></td>
       </tr>
     <% end %>
   </tbody>
