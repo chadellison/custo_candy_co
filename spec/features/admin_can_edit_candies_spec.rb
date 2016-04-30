@@ -15,13 +15,13 @@ RSpec.feature "admin can edit candies" do
 
     click_on "View All Candies"
 
-    expect(current_path).to eq admin_candies_path
+    expect(current_path).to eq "/admin/candies"
     expect(page).to have_content candy1.description
     expect(page).to have_content candy1.to_dollars
     expect(page).to have_content candy1.status
 
     click_on candy1.title
-    expect(current_path).to eq admin_candy_path(candy1.id)
+    expect(current_path).to eq "/admin/candies/#{candy1.id}"
 
     click_on "Back to Candies"
 

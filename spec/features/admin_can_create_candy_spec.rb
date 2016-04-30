@@ -78,7 +78,7 @@ RSpec.feature "admin can create candy" do
   scenario "a non-admin sees error message" do
     User.create(username: "bill", name: "bill", password: "password")
 
-    visit new_admin_candy_path
+    visit "/admin/candies/new"
     expect(page).to have_content "The page you were looking for doesn't exist."
 
     visit root_path
@@ -91,7 +91,7 @@ RSpec.feature "admin can create candy" do
 
     expect(current_path).to eq dashboard_path
 
-    visit new_admin_candy_path
+    visit "/admin/candies/new"
     expect(page).to have_content "The page you were looking for doesn't exist."
   end
 end

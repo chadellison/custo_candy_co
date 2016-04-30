@@ -15,7 +15,7 @@ class Admin::CandiesController < Admin::AuthorizationController
     @candy = Candy.new(candy_params)
     if @candy.save
       flash[:success] = "#{@candy.title} created!"
-      redirect_to admin_candies_path
+      redirect_to "/admin/candies"
     else
       flash.now[:error] = "All fields are required"
       render :new

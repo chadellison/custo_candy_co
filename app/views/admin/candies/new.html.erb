@@ -1,5 +1,5 @@
 <%= flash[:error] %>
-<%= form_for(@candy, multipart: true, url: admin_candies_path) do |f| %>
+<%= form_for(@candy, multipart: true, url: "/admin/candies") do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.label :description %>
@@ -12,5 +12,5 @@
   <%= f.collection_select :category_id, Category.all, :id, :name %><br>
   <%= f.label :image %><br>
   <%= f.file_field :image %><br><br>
-  <%= f.submit "Create Candy", class: "btn btn-success red"%>
+  <%= f.submit "Create Candy", class: "btn btn-success red" %>
 <% end %>
