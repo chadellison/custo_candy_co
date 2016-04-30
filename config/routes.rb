@@ -37,7 +37,13 @@ Rails.application.routes.draw do
   post"/orders",                    to: "orders#create"
   get "/orders/:id",                to: "orders#show"
 
-  get "/order_success", to: "order_success#show"
+  get "/order_success",             to: "order_success#show"
 
   resources :custom_candies, only: [:new, :create, :show, :index, :update]
+
+  get "/custom_candies",            to: "custom_candies#index"
+  get "/custom_candies/new",        to: "custom_candies#new"
+  get "/custom_candies/:id",        to: "custom_candies#show"
+  post "/custom_candies",           to: "custom_candies#create"
+  patch "/custom_candies/:id/edit", to: "custom_candies#update"
 end
